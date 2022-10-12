@@ -28,6 +28,6 @@
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
-        <a class="btn btn-outline btn-primary">Login</a>
+        <a class="outline outline-2 outline-blue-700 py-2 px-4 text-blue-700 text-sm">Login</a>
     </div>
 </div>
