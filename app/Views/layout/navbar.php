@@ -9,7 +9,7 @@
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a>Home</a></li>
                 <li><a>Tutorial</a></li>
-                <li><a>History</a></li>
+                <li><a>Check Booking</a></li>
             </ul>
         </div>
         <div class="px-2 mx-2">
@@ -24,7 +24,7 @@
         <ul class="menu menu-horizontal p-0">
             <li><a>Home</a></li>
             <li><a>Tutorial</a></li>
-            <li><a>History</a></li>
+            <li><a>Check Booking</a></li>
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
