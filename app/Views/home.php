@@ -5,6 +5,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<?= $this->include('layout/navbar') ?>
 <div class="relative h-screen w-full bg-white">
     <div class="absolute -top-20 right-0 w-auto hidden lg:block">
         <img src="<?= base_url('images/hero1.png') ?>" alt="">
