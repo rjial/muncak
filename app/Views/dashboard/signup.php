@@ -35,7 +35,7 @@
                     <path fill="#4E555E" d="m22 6-10 7L2 6" />
                     <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m22 6-10 7L2 6" />
                 </svg>
-                <input type="text" name="email" id="email" placeholder="example@gmail.com" class="text-black w-full outline-0">
+                <input type="text" name="email" id="email" placeholder="example@example.com" class="text-black w-full outline-0">
             </div>
             <div class="flex border border-1 border-slate-700 rounded rounded-full space-x-3 py-3 px-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -43,6 +43,13 @@
                     <path stroke="#020C18" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".7" stroke-width="2" d="M7 11V7a5 5 0 1 1 10 0v4" />
                 </svg>
                 <input type="password" name="password" id="password" placeholder="Password" class="text-black w-full outline-0">
+            </div>
+            <div class="flex border border-1 border-slate-700 rounded rounded-full space-x-3 py-3 px-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path fill="#020C18" fill-opacity=".7" d="M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2Z" />
+                    <path stroke="#020C18" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".7" stroke-width="2" d="M7 11V7a5 5 0 1 1 10 0v4" />
+                </svg>
+                <input type="password" name="confpassword" id="confpassword" placeholder="Password Confirmation" class="text-black w-full outline-0">
             </div>
             <button class="bg-blue-600 w-full rounded rounded-full text-white py-2 font-semibold text-lg">Sign Up</button>
             <div class="relative">
