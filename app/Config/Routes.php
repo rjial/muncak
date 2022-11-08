@@ -39,6 +39,7 @@ $routes->get('/', 'Home::index');
 
 
 // Dashboard and Auth Rest API
+$routes->get('/dashboard', 'DashboardController::index');
 $routes->get('/signup', 'DashboardController::signup');
 $routes->get('/signin', 'DashboardController::signin');
 $routes->post('/api/signin/', 'LoginController::index');
