@@ -39,12 +39,12 @@ $routes->get('/', 'Home::index');
 
 
 // Dashboard and Auth Rest API
-$routes->get('/dashboard', 'DashboardController::index');
-$routes->get('/signup', 'DashboardController::signup');
-$routes->get('/signin', 'DashboardController::signin');
-$routes->post('/api/signin/', 'LoginController::index');
-$routes->post('/api/signup/', 'RegisterController::index');
-$routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth']);
+$routes->get('/dashboard', 'DashboardController::index', ['as' => 'dashboard', 'filter' => 'auth']);
+$routes->get('/signup', 'DashboardController::signup', ['as' => 'signup']);
+$routes->get('/signin', 'DashboardController::signin', ['as' => 'signin']);
+$routes->post('/api/signin/', 'LoginController::index', ['as' => 'signin_api']);
+$routes->post('/api/signup/', 'RegisterController::index', ['as' => 'signup_api']);
+$routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth_api']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -7,8 +7,8 @@
 <?= $this->section('content') ?>
 <?= $this->include('layout/navbar') ?>
 <div class="relative h-screen w-full bg-white">
-    <div class="absolute bottom-0 right-0 h-96 -translate-y-80 object-fit w-auto hidden lg:block">
-        <img src="<?= base_url('images/hero1.png') ?>" alt="">
+    <div class="absolute top-0 right-0 h-96 object-fit h-screen hidden lg:block">
+        <img class="h-screen" src="<?= base_url('images/hero1.png') ?>" alt="">
     </div>
     <div class="absolute right-16 bottom-16 hidden lg:block">
         <svg xmlns="http://www.w3.org/2000/svg" width="158" height="158" fill="none" viewBox="0 0 158 158">

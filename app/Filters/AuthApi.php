@@ -10,7 +10,7 @@ use Firebase\JWT\JWT;
 use Config\Services;
 use Firebase\JWT\Key;
 
-class Auth implements FilterInterface
+class AuthApi implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.

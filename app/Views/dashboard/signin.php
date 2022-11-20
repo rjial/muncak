@@ -2,6 +2,7 @@
 
 <?= $this->section('head') ?>
 
+<script src="<?= base_url('js/login.js') ?>" defer></script>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -13,10 +14,27 @@
     </svg>
     <span class="merriweather text-sm">Mountcak</span>
 </div>
+<!-- <div class="fixed top-10 right-10 z-40">
+    <div id="toast-success" class="flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-white rounded-lg shadow space-x-3">
+        <div class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg ">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Check icon</span>
+        </div>
+        <div class="ml-3 text-sm font-normal">Item moved successfully.</div>
+        <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 " data-dismiss-target="#toast-success" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</div> -->
 <div class="h-screen w-full bg-white grid lg:grid-cols-2 grid-cols-1">
     <div class="flex justify-center flex-col mx-auto px-10 lg:px-16 sm:px-40 xl:px-44 w-full">
         <span class="text-black text-3xl font-semibold mb-8 text-center">Sign In</span>
-        <div class="flex flex-col space-y-6">
+        <form method="post" id="form-login" class="flex flex-col space-y-6">
             <div class="flex border border-1 border-slate-700 rounded rounded-full space-x-3 py-3 px-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path fill="#4E555E" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z" />
@@ -32,10 +50,17 @@
                 </svg>
                 <input type="password" name="password" id="password" placeholder="Password" class="text-black w-full outline-0">
             </div>
-            <button class="bg-blue-600 w-full rounded rounded-full text-white py-2 font-semibold text-lg">Sign In</button>
-            <div class="relative">
-                <hr class="bg-gray-600" />
-                <span class="absolute -top-3 text-gray-600 inset-x-1/2 w-fit text-center -translate-x-1/2 bg-white px-1.5">or sign in with</span>
+            <button class="bg-blue-600 w-full rounded rounded-full text-white py-2 font-semibold text-lg transition flex justify-center items-center">
+                <svg class="animate-spin hidden -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="spinner">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sign In
+            </button>
+            <div class="flex items-center justify-center">
+                <hr class="bg-gray-600 flex-1" />
+                <span class="shrink-0 text-gray-600 text-center bg-white px-3">or sign in with</span>
+                <hr class="bg-gray-600 flex-1" />
             </div>
             <div class="flex justify-between px-24">
                 <img src="<?= base_url('images/google.png') ?>" alt="" class="w-9 h-9">
@@ -45,7 +70,7 @@
             <div class="text-center">
                 <span class="inter text-black">Not a member? <a href="<?= base_url('/signup') ?>" class="inter text-blue-500 font-bold">Sign up!</a></span>
             </div>
-        </div>
+        </form>
     </div>
     <div class="hidden lg:block">
         <img src="<?= base_url('images/bg_login.png') ?>" alt="" srcset="" class="h-screen w-full object-cover">
