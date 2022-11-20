@@ -18,10 +18,10 @@ class LoginController extends ResourceController
     use ResponseTrait;
     public function index()
     {
-        helper('form');
+        helper(['form']);
         $rules =[
             'email' => 'required|valid_email',
-            'password' => 'required|min_length[6]'        
+            'password' => 'required|min_length[6]'
         ];
         if (!$this->validate($rules)) return $this->fail($this->validator->getErrors());
         $model = new UsersModel();

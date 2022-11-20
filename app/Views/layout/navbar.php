@@ -1,3 +1,4 @@
+
 <div class="navbar fixed top-0 z-30 transition duration-300 ease-in-out" id="navbar">
     <div class="navbar-start">
         <div class="dropdown">
@@ -28,6 +29,14 @@
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
-        <a class="outline outline-2 outline-blue-700 py-2 px-4 text-blue-700 text-sm">Login</a>
+        <?php if(isLogged()) : ?>
+            <div class="flex items-center space-x-3">
+                <img class="h-7 rounded-full border border-1 border-black" src="<?= base_url('images/placeholder.jpg') ?>" alt="">
+                <span><?= getAuth()->username ?></span>
+            </div>
+        <?php else : ?>
+            <a class="<?= url_to('signin') ?>" class="outline outline-2 outline-blue-700 py-2 px-4 text-blue-700 text-sm">Login</a>
+        <?php endif; ?>
+
     </div>
 </div>
