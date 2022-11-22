@@ -10,7 +10,8 @@ class DashboardController extends BaseController
     {
         // helper('auth');
     }
-    public function index() {
+    public function index()
+    {
         helper(['auth']);
         // dd(isLogged());
         return view('dashboard/index');
@@ -21,9 +22,16 @@ class DashboardController extends BaseController
         if (isLogged()) return redirect()->route('dashboard');
         return view('dashboard/signup');
     }
-    public function signin() {
+    public function signin()
+    {
         helper(['auth']);
         if (isLogged()) return redirect()->route('dashboard');
         return view('dashboard/signin');
+    }
+    public function detailgunung()
+    {
+        helper(['auth']);
+        // dd(isLogged());
+        return view('gunung/index');
     }
 }
