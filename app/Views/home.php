@@ -37,24 +37,29 @@
         </div>
     </div>
 </div>
+
 <div class="relative w-full bg-white">
     <div class="mt-40 mx-auto w-full py-32">
-        <p class="text-center font-semibold text-5xl text-black">Our Services</p>
+        <p class="text-center font-semibold text-4xl text-black">Our Services</p>
         <div class="grid grid-cols-3 gap-10 px-28 mx-auto mt-16">
             <div class="flex flex-col">
-                <div class="h-64 border border-1">
-                    asdasd
+                <div class="h-64 flex justify-center items-center">
+                    <img class="h-full" src="<?= base_url('images/stationary.png') ?>" alt="">
                 </div>
                 <span class="text-xl text-black mt-8 text-center font-semibold">Hiking Planning</span>
                 <span class="mt-5 text-center text-black font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis repellendus reiciendis atque, adipisci, consequatur accusamus hic sint unde quos ullam at cumque itaque libero quia exercitationem dolorum nisi obcaecati.</span>
             </div>
             <div class="flex flex-col">
-                <div class="h-64 border border-1"></div>
+                <div class="h-64 flex justify-center items-center">
+                    <img class="h-full" src="<?= base_url('images/selfieboy.png') ?>" alt="">
+                </div>
                 <span class="text-xl text-black mt-8 text-center font-semibold">Hiking Planning</span>
                 <span class="mt-5 text-center text-black font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis repellendus reiciendis atque, adipisci, consequatur accusamus hic sint unde quos ullam at cumque itaque libero quia exercitationem dolorum nisi obcaecati.</span>
             </div>
             <div class="flex flex-col">
-                <div class="h-64 border border-1"></div>
+                <div class="h-64 flex justify-center items-center">
+                    <img class="h-full" src="<?= base_url('images/travelbag.png') ?>" alt="">
+                </div>
                 <span class="text-xl text-black mt-8 text-center font-semibold">Hiking Planning</span>
                 <span class="mt-5 text-center text-black font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis repellendus reiciendis atque, adipisci, consequatur accusamus hic sint unde quos ullam at cumque itaque libero quia exercitationem dolorum nisi obcaecati.</span>
             </div>

@@ -44,10 +44,10 @@ $gunungs = [
 <?= $this->section('content') ?>
 <?= $this->include('layout/navbar') ?>
 <div class="h-screen bg-homedash bg-no-repeat bg-cover relative">
-    <div class="pt-36 px-16 mx-auto flex justify-center">
+    <div class="pt-48 px-16 mx-auto flex justify-center">
         <div class="flex flex-col">
-            <span class="text-3xl font-bold text-sky-600">TRIPS WITH US</span>
-            <span class="garamond text-9xl logo-dash text-transparent">Mountcak</span>
+            <span class="text-3xl font-bold text-white">TRIPS WITH US</span>
+            <span class="garamond text-9xl logo-dash-white text-transparent ">Mountcak</span>
         </div>
     </div>
     <div class="pt-36 px-20 mx-auto grid grid-cols-9 gap-5">
@@ -64,7 +64,7 @@ $gunungs = [
                 </defs>
             </svg>
             <select name="location" id="location" class="w-full my-3 mr-3 text-black bg-white">
-                <option value="">Pilih</option>
+                <option value="">Location</option>
             </select>
         </div>
         <div class="col-span-4 flex  bg-white rounded-md gap-3">
@@ -73,7 +73,7 @@ $gunungs = [
             </svg>
 
             <select name="location" id="location" class="w-full my-3 mr-3 text-black bg-white">
-                <option value="">Pilih</option>
+                <option value="">Date</option>
             </select>
         </div>
         <div class="col-span-1">
