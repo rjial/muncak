@@ -1,4 +1,3 @@
-
 <div class="navbar fixed top-0 z-30 transition duration-300 ease-in-out" id="navbar">
     <div class="navbar-start">
         <div class="dropdown">
@@ -29,7 +28,7 @@
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
-        <?php if(isLogged()) : ?>
+        <?php if (isLogged()) : ?>
             <div class="flex items-center space-x-3">
                 <img class="h-7 rounded-full border border-1 border-black" src="<?= base_url('images/placeholder.jpg') ?>" alt="">
                 <span><?= getAuth()->username ?></span>

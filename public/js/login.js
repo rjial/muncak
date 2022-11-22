@@ -44,6 +44,7 @@ loginform.addEventListener('submit', function(e) {
     })
     .catch(function(data) {
       // console.trace(data)
+      console.log(data)
       doneFunc(function() {
         
       })

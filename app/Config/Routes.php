@@ -46,6 +46,9 @@ $routes->post('/api/signin/', 'LoginController::index', ['as' => 'signin_api']);
 $routes->post('/api/signup/', 'RegisterController::index', ['as' => 'signup_api']);
 $routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth_api']);
 $routes->get('/api/gunung/', 'GunungController::index');
+
+// sementara untuk edit halaman detail
+$routes->get('/dashboard/detailgunung', 'DashboardController::detailgunung', ['as' => 'detailgunung']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -90,7 +90,7 @@ $gunungs = [
 <div class="py-16 px-40 mx-auto bg-white">
     <div class="flex flex-col space-y-7">
         <?php foreach ($gunungs as $gunung) : ?>
-            <div class="flex flex-row shadow-xl rounded-l-lg ">
+            <div class="flex flex-row rounded-l-lg soft-shadow">
                 <div class="basis-3/4 flex flex-col justify-between py-5 px-10 border-b border-l border-t border-gray-100 rounded-l-lg">
                     <div class="flex flex-col space-y-4">
                         <span class="text-4xl font-bold text-black"><?= $gunung['title'] ?></span>
@@ -101,7 +101,7 @@ $gunungs = [
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
-                        <button <?= $gunung['book_available'] > 0 ? '' : 'disabled' ?> class="py-3 px-6 rounded-lg font-bold text-white text-xl <?= $gunung['book_available'] > 0 ? 'bg-blue-500' : 'bg-blue-100' ?>">Book Now</button>
+                        <a href="<?= url_to("detailgunung") ?>" <?= $gunung['book_available'] > 0 ? '' : 'disabled' ?> class="py-3 px-6 rounded-lg font-500 text-white text-l <?= $gunung['book_available'] > 0 ? 'bg-blue-500' : 'bg-blue-100' ?>">See details</a>
                         <div class="flex space-x-3 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="none" viewBox="0 0 24 16">
                                 <path fill="#000" fill-opacity=".9" d="M.95 16v-2.35c0-.583.15-1.113.45-1.588.3-.474.717-.829 1.25-1.062 1.217-.533 2.313-.917 3.288-1.15.974-.233 1.979-.35 3.012-.35s2.033.117 3 .35c.967.233 2.058.617 3.275 1.15a2.854 2.854 0 0 1 1.725 2.65V16h-16Zm17.5 0v-2.35c0-1.05-.267-1.912-.8-2.588-.533-.675-1.233-1.22-2.1-1.637 1.15.133 2.233.33 3.25.587 1.017.259 1.842.555 2.475.888.55.317.983.708 1.3 1.175.317.467.475.992.475 1.575V16h-4.6Zm-9.5-8.025c-1.1 0-2-.35-2.7-1.05-.7-.7-1.05-1.6-1.05-2.7s.35-2 1.05-2.7c.7-.7 1.6-1.05 2.7-1.05s2 .35 2.7 1.05c.7.7 1.05 1.6 1.05 2.7s-.35 2-1.05 2.7c-.7.7-1.6 1.05-2.7 1.05Zm9-3.75c0 1.1-.35 2-1.05 2.7-.7.7-1.6 1.05-2.7 1.05-.183 0-.387-.013-.612-.038a2.644 2.644 0 0 1-.613-.137c.4-.417.704-.93.912-1.538.209-.608.313-1.287.313-2.037s-.104-1.413-.313-1.988A5.314 5.314 0 0 0 12.975.65 5.274 5.274 0 0 1 14.2.475c1.1 0 2 .35 2.7 1.05.7.7 1.05 1.6 1.05 2.7ZM2.45 14.5h13v-.85c0-.267-.08-.525-.237-.775a1.307 1.307 0 0 0-.588-.525c-1.2-.533-2.208-.892-3.025-1.075-.817-.183-1.7-.275-2.65-.275s-1.837.092-2.662.275c-.825.183-1.838.542-3.038 1.075a1.24 1.24 0 0 0-.575.525c-.15.25-.225.508-.225.775v.85Zm6.5-8.025c.65 0 1.188-.213 1.613-.638.425-.425.637-.962.637-1.612 0-.65-.212-1.188-.637-1.613-.426-.425-.963-.637-1.613-.637s-1.187.212-1.612.637c-.426.425-.638.963-.638 1.613s.212 1.187.638 1.612c.425.425.962.638 1.612.638Z" />
