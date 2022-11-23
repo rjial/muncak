@@ -26,7 +26,7 @@ $gunung = [
 <?= $this->include('layout/navbar') ?>
 
 <div class="h-screen relative">
-    <img class="h-full w-full absolute" src="<?= base_url('images/gunung/gunungbromo1.png') ?>" alt="">
+    <img class="h-full w-full absolute brightness-[0.25]" src="<?= base_url('images/gunung/gunungbromo1.png') ?>" alt="">
     <div class="flex flex-row justify-between items-center absolute w-full px-48 h-full">
         <div class="w-16 h-0 border-2 border-solid border-white rounded-full"></div>
         <div class="flex flex-col text-center gap-y-7">
