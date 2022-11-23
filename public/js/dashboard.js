@@ -5,16 +5,17 @@ function getGunungs() {
     const jwt = Cookies.get('jwt')
     axios.get('/api/gunung', { headers: { Authorization: `Bearer ${jwt}` } })
         .then((data) => {
-            let gunung_clone = gunung_container.querySelector('#gunung-card-template.hidden').cloneNode(true)
-            gunung_clone.setAttribute('id', 'gunung-card')
+
             let card = gunung_container.querySelectorAll('#gunung-card')
             card.forEach((item) => {
                 gunung_container.removeChild(item)
             })
             gunung_shimmer.forEach((shimmer) => shimmer.classList.add('hidden'))
             window.debugChild = gunung_container.childNodes[1]
-            
+
             data.data.forEach((item) => {
+                let gunung_clone = gunung_container.querySelector('#gunung-card-template.hidden').cloneNode(true)
+                gunung_clone.setAttribute('id', 'gunung-card')
                 console.log(item)
                 let gunung_title = gunung_clone.querySelector('#gunung-title')
                 let gunung_desc = gunung_clone.querySelector('#gunung-desc')
@@ -32,7 +33,7 @@ function getGunungs() {
                     gunung_button_detail.href = "#"
                 }
                 gunung_book_available.textContent = `${item.book_available} People`
-                gunung_container.appendChild( gunung_clone)
+                gunung_container.appendChild(gunung_clone)
             })
         })
         .catch((err) => console.error(err))
