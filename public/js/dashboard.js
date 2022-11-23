@@ -21,9 +21,11 @@ function getGunungs() {
                 let gunung_desc = gunung_clone.querySelector('#gunung-desc')
                 let gunung_button_detail = gunung_clone.querySelector('#button-detail')
                 let gunung_book_available = gunung_clone.querySelector('#book-available')
+                let gunung_img = gunung_clone.querySelector('#gunung-img')
                 gunung_title.textContent = item.nama
                 gunung_desc.textContent = item.deskripsi
                 gunung_clone.classList.remove('hidden')
+                gunung_img.src = "/images/gunung/" + item.url_gunung
                 if (item.book_available > 0) {
                     gunung_button_detail.classList.add('bg-blue-500')
                     gunung_button_detail.href = "/dashboard/detailgunung"
