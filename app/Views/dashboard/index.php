@@ -112,7 +112,7 @@ $gunungs = [
                     </div>
                 </div>
             </div>
-            <img class="basis-1/4 rounded-r-lg" src="<?= base_url('images/gunung/gunung_1.png') ?>" />
+            <img class="basis-1/4 rounded-r-lg" id="gunung-img" src="<?= base_url('images/gunung/gunung_1.png') ?>" />
         </div>
         <div></div>
     </div>
