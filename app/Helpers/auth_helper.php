@@ -23,10 +23,19 @@ function getAuth() {
     $cookie = get_cookie('jwt');
     $data = checkJWT($cookie);
     $user = (new UsersModel())->where('id_users', $data->id)->where('email', $data->email)->first();
+    // dd($user);
     $return = new stdClass();
-    $return->username = $user['username'];
-    $return->email = $user['email'];
-    return $return;
+    if ($user != null) {
+        $return->username = $user['username'];
+        $return->email = $user['email'];
+        return $return;
+    } else {
+        delete_cookie('jwt');
+        redirect()->route('signin');
+        $return->username = "";
+        $return->email = "";
+        return redirect()->route('signin');
+    }
 }
 function checkJWT($jwt) {
     $key    = getenv('TOKEN_SECRET');
