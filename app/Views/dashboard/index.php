@@ -93,8 +93,8 @@ $gunungs = [
                 <div class="basis-1/4 rounded-r-lg border-r border-t border-b border-gray-100 bg-gray-300"></div>
             </div>
         <?php endfor; ?>
-        <div class="flex flex-row rounded-l-lg soft-shadow h-72 hidden" id="gunung-card-template">
-            <div class="basis-3/4 flex flex-col justify-between py-5 px-10 border-b border-l border-t border-gray-100 rounded-l-lg rounded-r-lg">
+        <div class="grid grid-cols-8 rounded-l-lg soft-shadow h-72 hidden" id="gunung-card-template">
+            <div class="col-span-6 basis-3/4 flex flex-col justify-between py-5 px-10 border-b border-l border-t border-gray-100 rounded-l-lg rounded-r-lg">
                 <div class="flex flex-col space-y-4">
                     <span class="text-4xl font-bold text-black" id="gunung-title"></span>
                     <div class="flex flex-col space-y-2 poppins">
@@ -112,7 +112,7 @@ $gunungs = [
                     </div>
                 </div>
             </div>
-            <img class="basis-1/4 rounded-r-lg" id="gunung-img" src="<?= base_url('images/gunung/gunung_1.png') ?>" />
+            <img class="col-span-2 object-cover w-full h-full basis-1/4 rounded-r-lg" id="gunung-img" src="<?= base_url('images/gunung/gunung_1.png') ?>" />
         </div>
         <div></div>
     </div>
