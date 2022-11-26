@@ -34,4 +34,10 @@ class DashboardController extends BaseController
         // dd(isLogged());
         return view('gunung/index');
     }
+    public function sop()
+    {
+        helper(['auth']);
+        // dd(isLogged());
+        return view('dashboard/sop');
+    }
 }
