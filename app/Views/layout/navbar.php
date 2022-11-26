@@ -10,6 +10,7 @@
                 <li><a>Home</a></li>
                 <li><a>Tutorial</a></li>
                 <li><a>Check Booking</a></li>
+                <li><a>SOP</a></li>
             </ul>
         </div>
         <div class="px-2 mx-2">
@@ -25,6 +26,7 @@
             <li><a>Home</a></li>
             <li><a>Tutorial</a></li>
             <li><a>Check Booking</a></li>
+            <li><a href="/dashboard/sop">SOP</a></li>
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
