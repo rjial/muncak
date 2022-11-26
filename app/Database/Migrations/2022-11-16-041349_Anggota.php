@@ -15,10 +15,9 @@ class Anggota extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'id_gunung'              => [
+            'id_pemimpin' => [
                 'type'              => 'INT',
                 'constraint'        => 11,
-                'unsigned'          => true,
             ],
             'nama_anggota'              => [
                 'type'              => 'VARCHAR',
@@ -33,10 +32,9 @@ class Anggota extends Migration
                 'constraint'        => '50',
             ]
         ]);
-
+        
         $this->forge->addPrimaryKey('id_anggota');
-        $this->forge->addForeignKey('id_gunung', 'gunung', 'id_gunung', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('anggota'); 
+        $this->forge->createTable('anggota');
     }
 
     public function down()
