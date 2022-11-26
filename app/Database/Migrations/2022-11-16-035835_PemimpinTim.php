@@ -15,10 +15,9 @@ class PemimpinTim extends Migration
             'unsigned'          => true,
             'auto_increment'    => true,
         ],
-        'id_jalur'              => [
+        'id_anggota'              => [
             'type'              => 'INT',
             'constraint'        => 11,
-            'unsigned'          => true,
         ],
         'nama'              => [
             'type'              => 'varchar',
@@ -53,8 +52,8 @@ class PemimpinTim extends Migration
         ]
     ]);
         $this->forge->addPrimaryKey('id_pemimpin');
-        $this->forge->addForeignKey('id_jalur', 'jalur', 'id_jalur', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('pemimpin_tim'); 
+        $this->forge->createTable('pemimpin_tim');
+        //$this->forge->addForeignKey('id_anggota', 'anggota', 'id_anggota', 'CASCADE', 'CASCADE');
     }
     public function down()
     {
