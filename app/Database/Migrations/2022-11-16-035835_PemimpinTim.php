@@ -23,6 +23,10 @@ class PemimpinTim extends Migration
             'type'              => 'varchar',
             'constraint'        => '15',
         ],
+        'no_hp_pemimpin'           => [
+            'type'              => 'VARCHAR',
+            'constraint'        => '15',
+        ],
         'tempat_lahir'              => [
             'type'              => 'varchar',
             'constraint'        => '20',
