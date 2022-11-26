@@ -12,6 +12,9 @@ function isLogged() {
     if ($cookie != "") {
         $jwt = $cookie;
         if (checkJWT($jwt) == false) return false;
+        $data = checkJWT($cookie);
+        $user = (new UsersModel())->where('id_users', $data->id)->where('email', $data->email)->first();
+        if($user == null) return false;
         return true;
     } else {
         return false;

@@ -10,7 +10,6 @@ window.onload = (event) => {
       if (scrollpos >= header_height) { add_class_on_scroll() }
       else { remove_class_on_scroll() }
   
-      console.log(scrollpos)
   
     window.addEventListener('scroll', function() { 
       scrollpos = window.scrollY;
@@ -18,6 +17,5 @@ window.onload = (event) => {
       if (scrollpos >= header_height) { add_class_on_scroll() }
       else { remove_class_on_scroll() }
   
-      console.log(scrollpos)
     })
 }

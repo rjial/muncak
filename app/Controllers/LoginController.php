@@ -26,9 +26,12 @@ class LoginController extends ResourceController
         if (!$this->validate($rules)) return $this->fail($this->validator->getErrors());
         $model = new UsersModel();
         $users = $model->where("email", $this->request->getVar('email'))->first();
+        // var_dump($users['password']);
+        // var_dump(password_verify($this->request->getVar('password'), $users['password']));
         if (!$users) return $this->failNotFound('Email Not Found, Please Input Correct Address!');
         
         $verify = password_verify($this->request->getVar('password'), $users['password']);
+        // var_dump($verify);
         if(!$verify) return $this->fail('Wrong Password, Please Input Correct Password!');
 
         $key    = getenv('TOKEN_SECRET');

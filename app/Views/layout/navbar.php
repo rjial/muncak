@@ -31,12 +31,28 @@
     </div>
     <div class="navbar-end px-2 mx-2">
         <?php if (isLogged()) : ?>
-            <div class="flex items-center space-x-3">
-                <img class="h-7 rounded-full border border-1 border-black" src="<?= base_url('images/placeholder.jpg') ?>" alt="">
-                <span><?= getAuth()->username ?></span>
+            <!-- <div class="dropdown">
+                <div class="btn flex items-center space-x-3">
+                    <img class="h-7 rounded-full border border-1 border-black" src="<?= base_url('images/placeholder.jpg') ?>" alt="">
+                    <span><?= getAuth()->username ?></span>
+                </div>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a>Item 1</a></li>
+                    <li><a>Item 2</a></li>
+                </ul>
+            </div> -->
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" class="flex items-center space-x-3 cursor-pointer">
+                    <img class="h-7 rounded-full border border-1 border-black" src="<?= base_url('images/placeholder.jpg') ?>" alt="">
+                    <span><?= getAuth()->username ?></span>
+                </div>
+                <ul tabindex="0" class="dropdown-content menu mt-4 p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a>Profile</a></li>
+                    <li><a href="<?= url_to('logout') ?>">Logout</a></li>
+                </ul>
             </div>
         <?php else : ?>
-            <a class="<?= url_to('signin') ?>" class="outline outline-2 outline-blue-700 py-2 px-4 text-blue-700 text-sm">Login</a>
+            <a href="<?= url_to('signin') ?>" class="outline outline-2 outline-blue-700 py-2 px-4 text-blue-700 text-sm">Login</a>
         <?php endif; ?>
 
     </div>

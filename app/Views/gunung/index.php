@@ -6,7 +6,7 @@
 <?php
 // Mock bentuk response
 // @roy @agung
-$gunung = [
+$gununggg = [
 
     'title' => "Gunung Bromo",
     'desc' => "The Bromo or Mount Bromo is an active somma volcano and part of the Tengger mountains, in East Java, Indonesia. At 2,329 meters (7,641 ft) it is not the highest peak of the massif, but the most famous. The area is one of the most visited tourist destinations in East Java, and the volcano is included in the Bromo Tengger Semeru National Park. 
@@ -20,6 +20,7 @@ $gunung = [
 
 ];
 
+// dd($gunung);
 ?>
 
 <?= $this->section('content') ?>
@@ -30,7 +31,7 @@ $gunung = [
     <div class="flex flex-row justify-between items-center absolute w-full px-48 h-full">
         <div class="w-16 h-0 border-2 border-solid border-white rounded-full"></div>
         <div class="flex flex-col text-center gap-y-7">
-            <span class="work-sans text-8xl font-semibold text-white">Mount Bromo</span>
+            <span class="work-sans text-8xl font-semibold text-white"><?= $gunung['nama'] ?></span>
             <span class="merriweather text-4xl text-white">East Java</span>
         </div>
         <div class="w-16 h-0 border-2 border-solid border-white rounded-full"></div>
@@ -42,7 +43,7 @@ $gunung = [
     <div class="ml-20 flex-col flex basis-1/2 pr-24">
         <div class="poppins font-semibold text-xl text-slate-700 mb-1">About the Mountain</div>
         <br>
-        <div class="poppins font-normal text-base text-gray-500"><?= $gunung['desc']; ?></div>
+        <div class="poppins font-normal text-base text-gray-500"><?= $gunung['deskripsi'] ?></div>
     </div>
 
     <!-- kolom kanan -->
