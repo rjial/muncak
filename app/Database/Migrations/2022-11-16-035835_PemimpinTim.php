@@ -15,16 +15,20 @@ class PemimpinTim extends Migration
             'unsigned'          => true,
             'auto_increment'    => true,
         ],
-        'id_anggota'              => [
-            'type'              => 'INT',
-            'constraint'        => 11,
-        ],
         'nama_pemimpin_tim'              => [
             'type'              => 'varchar',
             'constraint'        => '50',
         ],
         'no_identitas'              => [
             'type'              => 'varchar',
+            'constraint'        => '15',
+        ],
+        'no_hp_pemimpin'           => [
+            'type'              => 'VARCHAR',
+            'constraint'        => '15',
+        ],
+        'jk' => [
+            'type'              => 'VARCHAR',
             'constraint'        => '15',
         ],
         'tempat_lahir'              => [
@@ -34,13 +38,9 @@ class PemimpinTim extends Migration
         'tanggal_lahir'              => [
             'type'              => 'DATE',
         ],
-        'desa'              => [
+        'desa_kelurahan'              => [
         'type'              => 'varchar',
         'constraint'        => '50',
-        ],
-        'kelurahan'              => [
-            'type'              => 'varchar',
-            'constraint'        => '50',
         ],
         'kecamatan'              => [
             'type'              => 'varchar',
