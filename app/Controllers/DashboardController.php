@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\GunungModel;
+use CodeIgniter\Cookie\Cookie as CookieCookie;
+use CodeIgniter\Cookie\CookieStore;
+use Config\Cookie;
 
 class DashboardController extends BaseController
 {
@@ -28,11 +32,13 @@ class DashboardController extends BaseController
         if (isLogged()) return redirect()->route('dashboard');
         return view('dashboard/signin');
     }
-    public function detailgunung()
+    public function detailgunung($id)
     {
         helper(['auth']);
+        $gunung = (new GunungModel())->find($id);
+        // dd($gunung);
         // dd(isLogged());
-        return view('gunung/index');
+        return view('gunung/index', ['gunung' => $gunung]);
     }
     public function sop()
     {
@@ -47,6 +53,11 @@ class DashboardController extends BaseController
 
         // dd(isLogged());
         return redirect()->to('/')->withCookies();
-        
+    }
+    public function entry()
+    {
+        helper(['auth']);
+
+        return view('dashboard/entry');
     }
 }

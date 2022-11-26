@@ -60,10 +60,8 @@
                     </svg>
                     Sign In
                 </button>
-                <div class="flex items-center justify-center">
-                    <hr class="bg-gray-600 flex-1" />
-                    <span class="shrink-0 text-gray-600 text-center bg-white px-3">or sign in with</span>
-                    <hr class="bg-gray-600 flex-1" />
+                <div class="flex flex-col w-full">
+                    <div class="divider">or sign in with</div>
                 </div>
                 <div class="flex justify-between px-24">
                     <img src="<?= base_url('images/google.png') ?>" alt="" class="w-9 h-9">
@@ -108,7 +106,9 @@
                 axios.post('/api/signin', payload)
                     .then((data) => {
                         this.switchLoading()
-                        Cookies.set('jwt', data.data.Token, {expires: 365})
+                        Cookies.set('jwt', data.data.Token, {
+                            expires: 365
+                        })
                         window.location.href = '/dashboard'
                     })
                     .catch((error) => {

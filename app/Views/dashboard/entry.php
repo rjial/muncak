@@ -1,15 +1,15 @@
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('head') ?>
-<script src="<?= base_url('js/home.js') ?>" defer></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- <script src="<?= base_url('js/home.js') ?>" defer></script> -->
+
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <?= $this->include('layout/navbar') ?>
 
 <!-- container -->
-<div id="app" class="px-16 py-28 flex flex-col items-center">
+<div id="app" class="px-16 py-28 mx-auto">
     <!-- title -->
     <div class="flex flex-col items-center gap-y-4 mb-20">
         <div class="poppins font-bold text-3xl text-slate-700">Standard Operating Procedure</div>
@@ -31,35 +31,16 @@
         </div>
         <div class="form-control flex flex-row justify-start">
             <label class="label cursor-pointer">
-                <input type="checkbox" v-model="agreesop" class="checkbox checkbox-primary mr-2" />
+                <input type="checkbox" checked="checked" class="checkbox checkbox-primary mr-2" />
                 <span class="label-text text-sm text-gray-500">Saya telah membaca, menyetujui, dan mengikuti semua peraturan dan SOP diatas</span>
             </label>
         </div>
-        <button @click="proceed" :class="agreesop ? 'bg-blue-500' : 'disabled bg-blue-100'" class="mx-auto bg-blue-500 text-white py-3 px-6 rounded mt-12 font-semibold tracking-wider">Continue</button>
+        <a href="#" class="mx-auto bg-blue-500 text-white py-3 px-6 rounded mt-12 font-semibold tracking-wider">Continue</a>
     </div>
 </div>
 
 <?= $this->endSection() ?>
 
 <?= $this->section('footer') ?>
-<script>
-    const {
-        createApp
-    } = Vue
-    createApp({
-        data() {
-            return {
-                agreesop: false
-            }
-        },
-        methods: {
-            proceed() {
-                if (agreesop) {
-                    // window.location.href = '/dashboard/detailgunung'
-                    console.log('isok')
-                }
-            }
-        }
-    }).mount('#app')
-</script>
+
 <?= $this->endSection() ?>
