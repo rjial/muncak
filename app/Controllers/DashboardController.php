@@ -40,4 +40,13 @@ class DashboardController extends BaseController
         // dd(isLogged());
         return view('dashboard/sop');
     }
+    public function logout()
+    {
+        helper('cookie');
+        delete_cookie('jwt');
+
+        // dd(isLogged());
+        return redirect()->to('/')->withCookies();
+        
+    }
 }

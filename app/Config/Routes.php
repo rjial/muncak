@@ -47,6 +47,7 @@ $routes->post('/api/signup/', 'RegisterController::index', ['as' => 'signup_api'
 $routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth_api']);
 $routes->get('/api/gunung/', 'GunungController::index');
 $routes->get('/dashboard/sop', 'DashboardController::sop', ['as' => 'sop']);
+$routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 
 // sementara untuk edit halaman detail
 $routes->get('/dashboard/detailgunung', 'DashboardController::detailgunung', ['as' => 'detailgunung']);
