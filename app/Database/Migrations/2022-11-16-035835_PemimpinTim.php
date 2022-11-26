@@ -19,7 +19,7 @@ class PemimpinTim extends Migration
             'type'              => 'INT',
             'constraint'        => 11,
         ],
-        'nama'              => [
+        'nama_pemimpin_tim'              => [
             'type'              => 'varchar',
             'constraint'        => '50',
         ],
@@ -33,6 +33,14 @@ class PemimpinTim extends Migration
         ],
         'tanggal_lahir'              => [
             'type'              => 'DATE',
+        ],
+        'desa'              => [
+        'type'              => 'varchar',
+        'constraint'        => '50',
+        ],
+        'kelurahan'              => [
+            'type'              => 'varchar',
+            'constraint'        => '50',
         ],
         'kecamatan'              => [
             'type'              => 'varchar',
