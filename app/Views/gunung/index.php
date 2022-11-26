@@ -67,13 +67,13 @@ $gunung = [
         </div>
 
         <!-- more details -->
-        <div class="flex flex-row flex items-start gap-32 mt-8">
+        <div class="flex flex-row flex items-start gap-28 mt-8">
             <div class="flex flex-col items-start gap-y-1">
                 <div class="poppins font-normal text-xs text-gray-500">Elevation</div>
                 <div class="poppins font-semibold text-xl text-slate-700">2329 m</div>
             </div>
             <div class="flex flex-col items-start gap-y-1">
-                <div class="poppins font-normal text-xs text-gray-500">Route length</div>
+                <div class="poppins font-normal text-xs text-gray-500">Average Route length</div>
                 <div class="poppins font-semibold text-xl text-slate-700">20 km</div>
             </div>
             <div class="flex flex-col items-start gap-y-1">
@@ -82,69 +82,9 @@ $gunung = [
             </div>
         </div>
 
-        <!-- dropdowns -->
-        <div class="flex flex-row items-start space-x-2 mt-8">
-            <!-- hiking trail -->
-            <div class="flex flex-col items-start gap-1 w-48">
-                <div class="source-sans-pro font-semibold text-xs text-stone-500">Hiking trail</div>
-                <div class="flex flex-row bg-soft-blue w-full px-2 rounded justify-between gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="my-3 ml-3" width="24" height="25" fill="none" viewBox="0 0 24 25">
-                        <g clip-path="url(#a)">
-                            <path stroke="#4D73F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10.5c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0Z"></path>
-                            <path stroke="#4D73F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
-                        </g>
-                        <defs>
-                            <clipPath id="a">
-                                <path fill="#fff" d="M0 0h24v24H0z" transform="translate(0 .5)"></path>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <select name="hikingtrail" id="hikingtrail" class="bg-soft-blue mr-3 w-full">
-                        <option value="">Choose</option>
-                    </select>
-                </div>
-            </div>
-            <!-- start date -->
-            <div class="flex flex-col items-start gap-1 w-48">
-                <div class="source-sans-pro font-semibold text-xs text-stone-500">Start date</div>
-                <!-- kotak input -->
-                <div class="flex flex-row bg-soft-blue w-full h-12 rounded justify-between gap-2 items-center px-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="my-3 ml-3" width="20" height="20" fill="none" viewBox="0 0 20 20">
-                        <path stroke="#4D73F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.833 3.333H4.167C3.247 3.333 2.5 4.08 2.5 5v11.667c0 .92.746 1.666 1.667 1.666h11.666c.92 0 1.667-.746 1.667-1.666V5c0-.92-.746-1.667-1.667-1.667Zm-2.5-1.666V5M6.667 1.667V5M2.5 8.333h15" />
-                    </svg>
-                    <select name="hikingtrail" id="hikingtrail" class="bg-soft-blue mr-3 w-full">
-                        <option value="">dd/mm/yyyy</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- number of people -->
-            <div class="flex flex-col items-start gap-1 w-48">
-                <div class="source-sans-pro font-semibold text-xs text-stone-500">Number of people</div>
-                <!-- kotak input -->
-                <div class="flex flex-row bg-soft-blue w-full h-12 rounded justify-between gap-2 items-center px-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" class="my-3 ml-3" height="20" fill="none" viewBox="0 0 20 20">
-                        <g clip-path="url(#a)">
-                            <path stroke="#4D73F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.166 17.5v-1.667a3.333 3.333 0 0 0-3.333-3.333H4.166a3.333 3.333 0 0 0-3.333 3.333V17.5M7.5 9.167a3.333 3.333 0 1 0 0-6.667 3.333 3.333 0 0 0 0 6.667ZM19.167 17.5v-1.667a3.334 3.334 0 0 0-2.5-3.225m-3.334-10a3.334 3.334 0 0 1 0 6.459" />
-                        </g>
-                        <defs>
-                            <clipPath id="a">
-                                <path fill="#fff" d="M0 0h20v20H0z" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-
-                    <select name="hikingtrail" id="hikingtrail" class="bg-soft-blue mr-3 w-full">
-                        <option value="">Choose</option>
-                    </select>
-                </div>
-            </div>
-
-        </div>
-
         <!-- harga dan button book now -->
         <div class="mt-8 grid grid-cols-2 gap-4">
-            <div class="flex justify-center items-center text-2xl text-blue-500 font-semibold poppins">Rp200.000</div>
+            <div class="flex justify-center items-center text-2xl text-blue-500 font-semibold poppins">Rp200.000 <span class="text-gray-500 font-normal text-sm">/person</span> </div>
             <a href="" class="flex justify-center items-center bg-blue-500 h-12 rounded text-white poppins font-semibold font-normal">Book now</a>
         </div>
     </div>
