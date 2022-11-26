@@ -15,7 +15,7 @@ class Anggota extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'id_pemimpin' => [
+            'id_tim' => [
                 'type'              => 'INT',
                 'constraint'        => 11,
             ],
@@ -27,13 +27,18 @@ class Anggota extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => '50',
             ],
-            'no_telpa'              => [
+            'jk' => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '15',
+            ],
+            'no_hp'              => [
                 'type'              => 'VARCHAR',
                 'constraint'        => '50',
             ]
         ]);
         
         $this->forge->addPrimaryKey('id_anggota');
+        //$this->forge->addForeignKey('id_tim', 'tim', 'id_tim', 'CASCADE', 'CASCADE');
         $this->forge->createTable('anggota');
     }
 

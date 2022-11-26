@@ -25,10 +25,15 @@ class Booking extends Migration
                 'constraint'        => 11,
                 'unsigned'          => true,
             ],
-                'id_users'              => [
-                    'type'              => 'INT',
-                    'constraint'        => 11,
-                    'unsigned'          => true,
+            'id_tim' => [
+                'type'              => 'INT',
+                'constraint'        => 11,
+                'unsigned'          => true,
+            ],
+            'id_users'              => [
+            'type'              => 'INT',
+            'constraint'        => 11,
+            'unsigned'          => true,
             ],
             'tanggal_naik'              => [
                 'type'              => 'DATETIME',
@@ -44,6 +49,7 @@ class Booking extends Migration
         $this->forge->addPrimaryKey('id_booking');
         $this->forge->addForeignKey('id_jalur', 'jalur', 'id_jalur', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_users', 'users', 'id_users', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_tim', 'tim', 'id_tim', 'CASCADE', 'CASCADE');
         $this->forge->createTable('booking');
     }
 
