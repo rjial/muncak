@@ -54,7 +54,7 @@ class DashboardController extends BaseController
         // dd(isLogged());
         return redirect()->to('/')->withCookies();
     }
-    public function entry()
+    public function entry($id)
     {
         helper(['auth']);
 

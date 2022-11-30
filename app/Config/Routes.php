@@ -51,7 +51,7 @@ $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 
 // sementara untuk edit halaman detail
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);
-$routes->get('/dashboard/entry', 'DashboardController::entry', ['as' => 'entry', 'filter' => 'auth']);
+$routes->get('/dashboard/entry/(:num)', 'DashboardController::entry/$1', ['as' => 'entry', 'filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
