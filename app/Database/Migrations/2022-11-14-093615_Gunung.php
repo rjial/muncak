@@ -28,6 +28,9 @@ class Gunung extends Migration
             ],
             'book_available'        => [
                 'type'              => 'INT'
+            ],
+            'harga_masuk'        => [
+                'type'              => 'INT'
             ]
         ]);
 
