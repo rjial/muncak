@@ -55,5 +55,6 @@ class JalurSeeder extends Seeder
                 'nama' => 'Lumajang'
             ]
         ];
+        $this->db->table('jalur')->insertBatch($data);
     }
 }
