@@ -45,12 +45,12 @@ class JalurSeeder extends Seeder
                 'nama' => 'Probolinggo'
             ],
             [
-                'id_jalur' => '7',
+                'id_jalur' => '8',
                 'id_gunung' => '3',
                 'nama' => 'Malang'
             ],
             [
-                'id_jalur' => '7',
+                'id_jalur' => '9',
                 'id_gunung' => '3',
                 'nama' => 'Lumajang'
             ]

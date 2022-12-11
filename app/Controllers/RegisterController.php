@@ -37,12 +37,9 @@ class RegisterController extends ResourceController
             'status'   => 201,
             'error'    => null,
             'messages' => [
-            'success' => 'User Registered Successfully!'
+                'success' => 'User Registered Successfully!'
             ]
         ];
         return $this->respondCreated($response);
-
-
     }
-
 }

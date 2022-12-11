@@ -39,7 +39,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="my-3 ml-3" width="24" height="25" fill="none" viewBox="0 0 24 25">
                     <path stroke="#4D73F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 4.5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-14a2 2 0 0 0-2-2Zm-3-2v4m-8-4v4m-5 4h18" />
                 </svg>
-    
+
                 <select name="location" id="location" class="w-full my-3 mr-3 text-black bg-white">
                     <option value="">Date</option>
                 </select>
@@ -50,12 +50,23 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21">
                         <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 4-3.625-3.625" />
                     </svg>
-    
+
                 </button>
             </div>
         </div>
     </div>
+
+    <!-- card gunung -->
+
     <div class="py-16 px-40 mx-auto bg-white">
+
+        <div class="flex justify-end">
+            <a href="<?= url_to('addgunung') ?>" class="poppins text-white text-sm bg-[#5CDB5C] px-4 py-3 rounded-lg font-medium gap-2.5 mb-8 flex items-center w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14" />
+                </svg><span>Tambah gunung</span></a>
+        </div>
+
         <div id="gunung-container">
             <div v-if="!dataGunung.length" class="flex flex-col space-y-7">
                 <?php for ($i = 0; $i < 3; $i++) : ?>
@@ -68,7 +79,7 @@
                                     <!-- <p class="text-black"></p> -->
                                     <div class="w-full h-5 bg-slate-300 rounded-full"></div>
                                     <div class="w-3/4 h-5 bg-slate-300 rounded-full"></div>
-        
+
                                 </div>
                             </div>
                             <div class="flex justify-between items-center">
@@ -110,6 +121,9 @@
             </div>
         </div>
     </div>
+
+    <!-- end of card gunung -->
+
     <div class="w-11/12 mx-auto border-t border-gray-300"></div>
     <div class="py-16 px-40 mx-auto bg-white">
         <div class="flex flex-col space-y-3 items-center">
@@ -126,7 +140,7 @@
                     </div>
                 </div>
             <?php endfor; ?>
-    
+
         </div>
     </div>
 </div>
@@ -150,21 +164,25 @@
             this.loadProvinsi()
         },
         methods: {
-            loadGunung(){
+            loadGunung() {
                 const jwt = Cookies.get('jwt')
                 // console.log(jwt)
-                axios.get('/api/gunung', { headers: { Authorization: `Bearer ${jwt}` } })
-                .then((data) => {
-                    // console.log(data.data)
-                    this.dataGunung = data.data
-                })
+                axios.get('/api/gunung', {
+                        headers: {
+                            Authorization: `Bearer ${jwt}`
+                        }
+                    })
+                    .then((data) => {
+                        // console.log(data.data)
+                        this.dataGunung = data.data
+                    })
             },
             loadProvinsi() {
                 axios.get('https://ibnux.github.io/data-indonesia/provinsi.json')
-                .then((data) => {
-                    console.log(data.data)
-                    this.dataProvinsi = data.data
-                })
+                    .then((data) => {
+                        console.log(data.data)
+                        this.dataProvinsi = data.data
+                    })
             }
         }
     }).mount('#app')
