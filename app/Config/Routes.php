@@ -52,6 +52,9 @@ $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 // sementara untuk edit halaman detail
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);
 $routes->get('/dashboard/entry/(:num)', 'DashboardController::entry/$1', ['as' => 'entry', 'filter' => 'auth']);
+
+// tambah gunung
+$routes->get('/gunung/add', 'GunungController::add', ['as' => 'addgunung', 'filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

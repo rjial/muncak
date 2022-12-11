@@ -19,7 +19,7 @@ class LoginController extends ResourceController
     public function index()
     {
         helper(['form']);
-        $rules =[
+        $rules = [
             'email' => 'required|valid_email',
             'password' => 'required|min_length[6]'
         ];
@@ -29,10 +29,10 @@ class LoginController extends ResourceController
         // var_dump($users['password']);
         // var_dump(password_verify($this->request->getVar('password'), $users['password']));
         if (!$users) return $this->failNotFound('Email Not Found, Please Input Correct Address!');
-        
+
         $verify = password_verify($this->request->getVar('password'), $users['password']);
         // var_dump($verify);
-        if(!$verify) return $this->fail('Wrong Password, Please Input Correct Password!');
+        if (!$verify) return $this->fail('Wrong Password, Please Input Correct Password!');
 
         $key    = getenv('TOKEN_SECRET');
         $payload = array(
@@ -42,17 +42,15 @@ class LoginController extends ResourceController
         );
 
         $token = JWT::encode($payload, $key, 'HS256');
-        
+
         $response = [
             'status'    => 200,
             'error'     => null,
             'messages'  => [
-            'success'   => 'User Login Successfully!'
+                'success'   => 'User Login Successfully!'
             ],
             'Token'     => $token
         ];
         return $this->respond($response);
-
     }
-
 }
