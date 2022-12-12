@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\RoleModel;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use \App\Models\UsersModel;
@@ -14,7 +15,7 @@ function isLogged() {
         if (checkJWT($jwt) == false) return false;
         $data = checkJWT($cookie);
         $user = (new UsersModel())->where('id_users', $data->id)->where('email', $data->email)->first();
-        if($user == null) return false;
+        if($user == null || $user == 0) return redirect('logout');
         return true;
     } else {
         return false;
@@ -26,17 +27,19 @@ function getAuth() {
     $cookie = get_cookie('jwt');
     $data = checkJWT($cookie);
     $user = (new UsersModel())->where('id_users', $data->id)->where('email', $data->email)->first();
-    // dd($user);
+    $role = (new RoleModel())->where('id_role', $user['id_role'])->first();
     $return = new stdClass();
     if ($user != null) {
         $return->username = $user['username'];
         $return->email = $user['email'];
+        $return->role = $role;
         return $return;
     } else {
         delete_cookie('jwt');
         redirect()->route('signin');
         $return->username = "";
         $return->email = "";
+        $return->role = "";
         return redirect()->route('signin');
     }
 }

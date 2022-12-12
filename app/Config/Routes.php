@@ -47,6 +47,7 @@ $routes->post('/api/signup/', 'RegisterController::index', ['as' => 'signup_api'
 $routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth_api']);
 $routes->get('/gunung/create', 'GunungController::create', ['as' => 'creategunung', 'filter' => 'auth']);
 $routes->get('/dashboard/sop', 'DashboardController::sop', ['as' => 'sop']);
+$routes->get('/dashboard/sop/(:num)', 'DashboardController::sop/$1', ['as' => 'sop_num']);
 $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 //gunung create and read
 $routes->get('/api/gunung/', 'GunungController::index');

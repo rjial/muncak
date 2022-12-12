@@ -7,10 +7,13 @@
                 </svg>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Home</a></li>
+                <li><a href="<?= url_to('Home::index') ?>">Home</a></li>
+                <?php if (isLogged()) : ?>
+                    <li><a>Dashboard</a></li>
+                <?php endif; ?>
                 <li><a>Tutorial</a></li>
                 <li><a>Check Booking</a></li>
-                <li><a>SOP</a></li>
+                <li><a href="<?= url_to('sop') ?>">SOP</a></li>
             </ul>
         </div>
         <div class="px-2 mx-2">
@@ -23,10 +26,13 @@
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
-            <li><a>Home</a></li>
+            <li><a href="<?= url_to('Home::index') ?>">Home</a></li>
+            <?php if (isLogged()) : ?>
+                <li><a href="<?= url_to('dashboard') ?>">Dashboard</a></li>
+            <?php endif; ?>
             <li><a>Tutorial</a></li>
             <li><a>Check Booking</a></li>
-            <li><a href="/dashboard/sop">SOP</a></li>
+            <li><a href="<?= url_to('sop') ?>">SOP</a></li>
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
