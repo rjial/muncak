@@ -45,16 +45,17 @@ $routes->get('/signin', 'DashboardController::signin', ['as' => 'signin']);
 $routes->post('/api/signin/', 'LoginController::index', ['as' => 'signin_api']);
 $routes->post('/api/signup/', 'RegisterController::index', ['as' => 'signup_api']);
 $routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth_api']);
-$routes->get('/api/gunung/', 'GunungController::index');
+$routes->get('/gunung/create', 'GunungController::create', ['as' => 'creategunung', 'filter' => 'auth']);
 $routes->get('/dashboard/sop', 'DashboardController::sop', ['as' => 'sop']);
 $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
-
+//gunung create and read
+$routes->get('/api/gunung/', 'GunungController::index');
+$routes->post('/api/gunung/add','GunungController::add');
 // sementara untuk edit halaman detail
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);
 $routes->get('/dashboard/entry/(:num)', 'DashboardController::entry/$1', ['as' => 'entry', 'filter' => 'auth']);
 
-// tambah gunung
-$routes->get('/gunung/add', 'GunungController::add', ['as' => 'addgunung', 'filter' => 'auth']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
