@@ -25,6 +25,20 @@
                     <input type="text" name="nama-gunung" id="nama-gunung" class=" border border-gray-400 rounded-md px-2 py-3.5 w-full bg-white">
                 </div>
                 <div class="grid grid-cols-4 gap-5">
+                    <div class="flex flex-col gap-2 col-span-2">
+                        <label for="tanggal-awal" class="text-sm">Tanggal awal</label>
+                        <div class=" border border-gray-400 rounded-md px-2 py-3.5">
+                            <input type="date" name="tanggal-awal" id="tanggal-awal" class="w-full bg-white active:border-0">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 col-span-2">
+                        <label for="tanggal-akhir" class="text-sm">Tanggal akhir</label>
+                        <div class=" border border-gray-400 rounded-md px-2 py-3.5">
+                            <input type="date" name="tanggal-akhir" id="tanggal-akhir" class="w-full bg-white active:border-0">
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-5">
                     <div class="flex flex-col gap-2 col-span-1">
                         <label for="kuota" class="text-sm">Kuota</label>
                         <input type="text" name="kuota" id="kuota" class=" border border-gray-400 rounded-md px-2 py-3.5 w-full bg-white">
