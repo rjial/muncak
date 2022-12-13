@@ -53,6 +53,7 @@ $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 $routes->get('/api/gunung/', 'GunungController::index');
 $routes->post('/api/gunung/add','GunungController::add');
 // sementara untuk edit halaman detail
+$routes->get('/dashboard/gunung/add', 'DashboardController::addgunung', ['as' => 'addgunung', 'filter' => 'auth']);
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);
 $routes->get('/dashboard/entry/(:num)', 'DashboardController::entry/$1', ['as' => 'entry', 'filter' => 'auth']);
 
