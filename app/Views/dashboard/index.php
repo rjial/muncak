@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <?= $this->extend('layout/layout') ?>
 
 <?= $this->section('head') ?>
@@ -10,7 +7,10 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cuttr/1.4.1/cuttr.min.js"></script>
 <?= $this->endSection() ?>
+<?php
+// dd(getAuth());
 
+?>
 
 <?= $this->section('content') ?>
 <?= $this->include('layout/navbar') ?>
@@ -65,13 +65,14 @@
     <!-- card gunung -->
 
     <div class="py-16 px-40 mx-auto bg-white">
-
+        <?php if(getAuth()->role->id_role == 1 || getAuth()->role->id_role == 2) : ?>
         <div class="flex justify-end">
             <a href="<?= url_to('addgunung') ?>" class="poppins text-white text-sm bg-[#5CDB5C] px-4 py-3 rounded-lg font-medium gap-2.5 mb-8 flex items-center w-fit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14" />
                 </svg><span>Tambah gunung</span></a>
         </div>
+        <?php endif ?>
 
         <div id="gunung-container">
             <div v-if="dataGunung.length > 0" class="flex flex-col space-y-7">
