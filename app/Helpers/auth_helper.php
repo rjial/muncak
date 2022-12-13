@@ -53,5 +53,16 @@ function checkJWT($jwt) {
         var_dump($err->getMessage());
         return false;
     }
+
 }
+
+function checkJWTAuth($jwt) {
+    if (checkJWT($jwt) == false) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
 ?>

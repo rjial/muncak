@@ -75,8 +75,8 @@
 
         <div id="gunung-container">
             <div v-if="dataGunung.length > 0" class="flex flex-col space-y-7">
-                <div v-for="gunung in dataGunung" class="grid grid-cols-8 rounded-l-lg rounded-r-lg soft-shadow h-72">
-                    <div class="col-span-6 basis-3/4 flex flex-col justify-between py-5 px-10 border-b border-l border-t border-gray-100 rounded-l-lg rounded-r-lg">
+                <div v-for="gunung in dataGunung" class="grid grid-cols-8 rounded-l-lg rounded-r-lg soft-shadow min-h-72">
+                    <div class="col-span-6 basis-3/4 flex flex-col justify-between py-5 px-10 border-b border-l border-t border-gray-100 rounded-l-lg rounded-r-lg space-y-10">
                         <div class="flex flex-col space-y-4">
                             <span class="text-4xl font-bold text-black" id="gunung-title">{{gunung.nama}}</span>
                             <div class="flex flex-col space-y-2 poppins">

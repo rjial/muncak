@@ -26,6 +26,7 @@ class GunungController extends ResourceController
         if (!$header) return $this->failUnauthorized('Token Required');
         $token = explode(' ', $header)[1];
         try {
+
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
             $model = new GunungModel();
             $data = $model->findAll();
@@ -44,12 +45,10 @@ class GunungController extends ResourceController
         if (!$header) return $this->failUnauthorized('Token Required');
         $token = explode(' ', $header)[1];
         try {
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
             $file = $this->request->getFile('gambar-gunung');
-            // dd($file);
-
             $gambar_gunung = $file->getName();
             if(!$file->isValid()) return $this->fail("File tidak valid");
-            // dd($file->isValid());
             $temp = explode(".",$gambar_gunung);
             $newfilename = round(microtime(true)) . '.' . end($temp);
             if ($file->move(FCPATH . "/images/gunung/", $newfilename)) {
@@ -58,7 +57,8 @@ class GunungController extends ResourceController
                     'nama' => $this->request->getPost('nama'),
                     'deskripsi' => $this->request->getPost('deskripsi'),
                     'url_gunung' => $newfilename,
-                    'book_available' => $this->request->getPost('book_available')
+                    'book_available' => $this->request->getPost('book_available'),
+                    'harga_masuk' => $this->request->getPost('harga_masuk')
                 ];
                 $model->insert($data);
             }
