@@ -31,7 +31,13 @@ class Gunung extends Migration
             ],
             'harga_masuk'        => [
                 'type'              => 'INT'
-            ]
+            ],
+            'tanggal_awal'        => [
+                'type'              => 'DATE'
+            ],
+            'tanggal_akhir'        => [
+                'type'              => 'DATE'
+            ],
         ]);
 
         $this->forge->addPrimaryKey('id_gunung');
