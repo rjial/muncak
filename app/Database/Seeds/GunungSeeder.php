@@ -15,21 +15,27 @@ class GunungSeeder extends Seeder
                 
                 'url_gunung' => 'gunung_1.png',
                 'book_available' => '1',
-                'harga_masuk' => 75000
+                'harga_masuk' => 75000,
+                'tanggal_awal' => '2022-12-12',
+                'tanggal_akhir' => '2022-12-29'
             ],
             [
                 'nama' => 'Gunung Semeru',
                 'deskripsi' => 'The Semeru (Javanese: ꦱꦼꦩꦺꦫꦸ), or Mount Semeru (Javanese: ꦒꦸꦤꦸꦁ​ꦱꦼꦩꦺꦫꦸ (Pegon:ڮنڠ سمَيرو, romanized: Gunung Semeru), is an active volcano located in East Java, Indonesia. It is located in a subduction zone, where the Indo-Australian plate subducts under the Eurasia plate.[3] It is the highest mountain on the island of Java. The name "Semeru" is derived from Meru, the central world mountain in Hinduism, or Sumeru, the abode of gods. This stratovolcano is also known as Mahameru, meaning "The Great Mountain" in Sanskrit.[4][1] It is one of the more popular hiking destinations in Indonesia.',
                 'url_gunung' => 'gunungbromo4.png',
                 'book_available' => '1',
-                'harga_masuk' => 75000
+                'harga_masuk' => 75000,
+                'tanggal_awal' => '2022-12-12',
+                'tanggal_akhir' => '2022-12-29'
             ],
             [
                 'nama' => 'Gunung Bromo',
                 'deskripsi' => 'The Bromo (Javanese: ꦧꦿꦩ), or Mount Bromo (Javanese: ꦒꦸꦤꦸꦁ​ꦧꦿꦩ (Pegon: ڮنڠ برومو, romanized: Gunung Bromo) is an active somma volcano and part of the Tengger mountains, in East Java, Indonesia. At 2,329 meters (7,641 ft) it is not the highest peak of the massif, but the most famous. The area is one of the most visited tourist destinations in East Java, and the volcano is included in the Bromo Tengger Semeru National Park. The name Bromo comes from the Javanese pronunciation of Brahma, the Hindu god of creation. Mount Bromo is located in the middle of a plain called "Sea of Sand" (Javanese: Segara Wedi or Indonesian: Lautan Pasir), a nature reserve that has been protected since 1919.',
                 'url_gunung' => 'gunungbromo1.png',
                 'book_available' => '1',
-                'harga_masuk' => 75000
+                'harga_masuk' => 75000,
+                'tanggal_awal' => '2022-12-12',
+                'tanggal_akhir' => '2022-12-29'
             ]
             ];
             $this->db->table('gunung')->insertBatch($data);

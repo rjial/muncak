@@ -27,10 +27,18 @@ class RegisterController extends ResourceController
         ];
         if (!$this->validate($rules)) return $this->fail($this->validator->getErrors());
         $data = [
-            'username'         => $this->request->getVar('username'),
-            'email'         => $this->request->getVar('email'),
-            'password'      => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT)
+            'username'              => $this->request->getVar('username'),
+            'email'                 => $this->request->getVar('email'),
+            'password'              => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'nama_users'            => $this->request->getVar('nama'),
+            'jenis_kelamin_users'   => 'pria',
+            'no_identitas_users'    => '081231231231',
+            'no_hp_users'           => $this->request->getVar('nama'),
+            'alamat_users'          => $this->request->getVar('alamat'),
+            'id_role'               => "3",
         ];
+        // return $this->respondCreated($data);
+        // die();
         $model = new UsersModel();
         $registered = $model->save($data);
         $response = [

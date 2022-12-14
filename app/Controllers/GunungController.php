@@ -40,12 +40,14 @@ class GunungController extends ResourceController
         // echo WRITEPATH;
         // die();
         // dd($this->request->getPost());
+        helper(['auth']);
         $key = getenv('TOKEN_SECRET');
         $header = $this->request->getServer('HTTP_AUTHORIZATION');
         if (!$header) return $this->failUnauthorized('Token Required');
         $token = explode(' ', $header)[1];
         try {
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            if(getAuth()->role->id_role == 3) return $this->fail("Anda bukan admin atau pengelola gunung");
             $file = $this->request->getFile('gambar-gunung');
             $gambar_gunung = $file->getName();
             if(!$file->isValid()) return $this->fail("File tidak valid");
@@ -74,7 +76,7 @@ class GunungController extends ResourceController
             return $this->respond($response);
         } catch (\Throwable $th) {
             // exit($th->getMessage());
-            return $this->fail('Gagal Menambahkan data gunung');
+            return $this->fail('Gagal Menambahkan data gunung : ' . $th->getMessage());
         }
     }
     public function create()
