@@ -4,9 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\GunungModel;
-use CodeIgniter\Cookie\Cookie as CookieCookie;
-use CodeIgniter\Cookie\CookieStore;
-use Config\Cookie;
 
 class DashboardController extends BaseController
 {
@@ -40,11 +37,17 @@ class DashboardController extends BaseController
         // dd(isLogged());
         return view('gunung/index', ['gunung' => $gunung]);
     }
-    public function sop()
+    public function sop($id = false)
     {
         helper(['auth']);
         // dd(isLogged());
-        return view('dashboard/sop');
+        $isGunung = false;
+        if ($id > 0) {
+            $isGunung = true;
+        } else {
+            $isGunung = false;
+        }
+        return view('dashboard/sop', ["isGunung" => $isGunung]);
     }
     public function logout()
     {
@@ -59,5 +62,9 @@ class DashboardController extends BaseController
         helper(['auth']);
 
         return view('dashboard/entry');
+    }
+    public function addgunung() {
+        helper(['auth']);
+        return view('gunung/addgunung');
     }
 }

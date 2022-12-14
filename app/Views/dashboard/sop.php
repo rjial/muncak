@@ -29,6 +29,7 @@
             <div class="poppins font-bold text-slate-700 tracking-wide">TARIF DAN PEMBAYARAN KARCIS</div>
             <div class="divider mt-1 mb-1"></div>
         </div>
+        <?php if ($isGunung) :?>
         <div class="form-control flex flex-row justify-start">
             <label class="label cursor-pointer">
                 <input type="checkbox" v-model="agreesop" class="checkbox checkbox-primary mr-2" />
@@ -36,6 +37,7 @@
             </label>
         </div>
         <button @click="proceed" :class="agreesop ? 'bg-blue-500' : 'disabled bg-blue-100'" class="mx-auto bg-blue-500 text-white py-3 px-6 rounded mt-12 font-semibold tracking-wider">Continue</button>
+        <?php endif ?>
     </div>
 </div>
 

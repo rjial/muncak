@@ -27,7 +27,7 @@ $gununggg = [
 <?= $this->include('layout/navbar') ?>
 
 <div class="h-screen relative">
-    <img class="h-full w-full absolute brightness-[0.25]" src="<?= base_url('images/gunung/gunungbromo1.png') ?>" alt="">
+    <img class="h-full w-full absolute brightness-[0.25]" src="<?= base_url('images/gunung/' . $gunung['url_gunung']) ?>" alt="">
     <div class="flex flex-row justify-between items-center absolute w-full px-48 h-full">
         <div class="w-16 h-0 border-2 border-solid border-white rounded-full"></div>
         <div class="flex flex-col text-center gap-y-7">
@@ -85,7 +85,7 @@ $gununggg = [
 
         <!-- harga dan button book now -->
         <div class="mt-8 grid grid-cols-2 gap-4">
-            <div class="flex justify-center items-center text-2xl text-blue-500 font-semibold poppins">Rp200.000 <span class="text-gray-500 font-normal text-sm">/person</span> </div>
+            <div class="flex justify-center items-center text-2xl text-blue-500 font-semibold poppins">Rp<?= $gunung['harga_masuk'] ?> <span class="text-gray-500 font-normal text-sm">/person</span> </div>
             <a href="" class="flex justify-center items-center bg-blue-500 h-12 rounded text-white poppins font-semibold font-normal">Book now</a>
         </div>
     </div>
