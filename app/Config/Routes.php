@@ -49,6 +49,7 @@ $routes->get('/gunung/create', 'GunungController::create', ['as' => 'creategunun
 $routes->get('/dashboard/sop', 'DashboardController::sop', ['as' => 'sop']);
 $routes->get('/dashboard/sop/(:num)', 'DashboardController::sop/$1', ['as' => 'sop_num']);
 $routes->get('/dashboard/history', 'DashboardController::history', ['as' => 'history']);
+$routes->get('/dashboard/history/detail', 'DashboardController::detail_history', ['as' => 'detail_history']);
 $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 //gunung create and read
 $routes->get('/api/gunung/', 'GunungController::index');

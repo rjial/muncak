@@ -15,10 +15,10 @@
     <div class="flex flex-col gap-y-4 w-full poppins">
         <div class="soft-shadow-2 flex flex-col rounded-lg">
             <div class="m-5">
-                <div class="poppins font-semibold text-slate-700 mb-1">Payment History</div>
+                <div class="poppins font-semibold text-slate-700 mb-2">Payment History</div>
                 <table class="table-auto w-full">
                     <thead class="">
-                        <tr class="text-left text-sm border-b-2 border-b-color">
+                        <tr class="text-left text-sm border-b border-b-color">
                             <th class="px-4 py-3 font-normal th-color">No</th>
                             <th class="px-4 py-3 font-normal th-color">Date</th>
                             <th class="px-4 py-3 font-normal th-color">Booking code</th>
@@ -34,7 +34,7 @@
                             <td class="px-4 pb-3 pt-6">BR-93810533</td>
                             <td class="px-4 pb-3 pt-6">Mount Bromo</td>
                             <td id="status-booking" class="px-4 pb-3 pt-6">Completed</td>
-                            <td class="px-4 pb-3 pt-6 text-blue-600"><a href="">DETAILS</a></td>
+                            <td class="px-4 pb-3 pt-6 text-blue-600"><a href="<?= url_to('detail_history') ?>">DETAILS</a></td>
                         </tr>
                         <tr class="text-sm td-color">
                             <td class="px-4 py-3">2</td>
@@ -42,7 +42,7 @@
                             <td class="px-4 py-3">AR-01930025</td>
                             <td class="px-4 py-3">Mount Arjuno</td>
                             <td id="status-booking" class="px-4 py-3">In process</td>
-                            <td class="px-4 py-3 text-blue-600"><a href="">DETAILS</a></td>
+                            <td class="px-4 py-3 text-blue-600"><a href="<?= url_to('detail_history') ?>">DETAILS</a></td>
                         </tr>
                     </tbody>
                 </table>

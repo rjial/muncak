@@ -74,4 +74,10 @@ class DashboardController extends BaseController
         helper(['auth']);
         return view('history/index');
     }
+
+    public function detail_history()
+    {
+        helper(['auth']);
+        return view('history/detail');
+    }
 }
