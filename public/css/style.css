@@ -43,3 +43,12 @@ body {
 .primary-color-bg{
     background: #4D73F8;
 }
+.th-color{
+    color: rgba(0, 0, 0, 0.5);
+}
+.td-color{
+    color: rgba(0, 0, 0, 0.8);
+}
+.border-b-color{
+    color:rgba(0, 0, 0, 0.2);
+}

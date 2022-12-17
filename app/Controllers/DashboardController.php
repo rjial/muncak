@@ -63,8 +63,15 @@ class DashboardController extends BaseController
 
         return view('dashboard/entry');
     }
-    public function addgunung() {
+    public function addgunung()
+    {
         helper(['auth']);
         return view('gunung/addgunung');
+    }
+
+    public function history()
+    {
+        helper(['auth']);
+        return view('history/index');
     }
 }
