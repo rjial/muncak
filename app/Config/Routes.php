@@ -48,10 +48,11 @@ $routes->get('/api/me/', 'MeController::index',  ['filter' => 'auth_api']);
 $routes->get('/gunung/create', 'GunungController::create', ['as' => 'creategunung', 'filter' => 'auth']);
 $routes->get('/dashboard/sop', 'DashboardController::sop', ['as' => 'sop']);
 $routes->get('/dashboard/sop/(:num)', 'DashboardController::sop/$1', ['as' => 'sop_num']);
+$routes->get('/dashboard/history', 'DashboardController::history', ['as' => 'history']);
 $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 //gunung create and read
 $routes->get('/api/gunung/', 'GunungController::index');
-$routes->post('/api/gunung/add','GunungController::add');
+$routes->post('/api/gunung/add', 'GunungController::add');
 // sementara untuk edit halaman detail
 $routes->get('/dashboard/gunung/add', 'DashboardController::addgunung', ['as' => 'addgunung', 'filter' => 'auth']);
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);

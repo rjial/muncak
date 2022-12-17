@@ -33,6 +33,7 @@
             <li><a>Tutorial</a></li>
             <li><a>Check Booking</a></li>
             <li><a href="<?= url_to('sop') ?>">SOP</a></li>
+            <li><a href="<?= url_to('history') ?>">History</a></li>
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">
