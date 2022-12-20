@@ -21,26 +21,31 @@
         <button :class="tabIndex == 1 ? 'border-b border-blue-500 text-[#4D73F8]' : 'text-black'" @click="switchTab(1)" class="px-4 py-4 text-black poppins font-medium">Leader</button>
         <button :class="tabIndex == 2 ? 'border-b border-blue-500 text-[#4D73F8]' : 'text-black'" @click="switchTab(2)" class="px-4 py-4 text-black poppins font-medium">Member</button>
     </div>
-    <div v-if="tabIndex == 0" class="w-full grid grid-cols-3 gap-x-5 mt-5 poppins text-black">
-        <div class="flex flex-col gap-2">
-            <label for="jalur-pendakian" class="text-sm">Jalur Pendakian</label>
-            <div class=" border border-gray-400 rounded-md px-2 py-3.5">
-                <select class="w-full bg-white " name="jalur-pendakian" id="jalur-pendakian">
-                    <option value="">Sembalun</option>
-                </select>
+    <div v-if="tabIndex == 0" class="w-full mt-5 poppins text-black">
+        <div class="grid grid-cols-3 gap-x-5 ">
+            <div class="flex flex-col gap-2">
+                <label for="jalur-pendakian" class="text-sm">Jalur Pendakian</label>
+                <div class=" border border-gray-400 rounded-md px-2 py-3.5">
+                    <select class="w-full bg-white " name="jalur-pendakian" id="jalur-pendakian">
+                        <option value="">Sembalun</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="tanggal-naik" class="text-sm">Tanggal Naik</label>
+                <div class=" border border-gray-400 rounded-md px-2 py-3.5">
+                    <input type="date" name="tanggal-naik" id="tanggal-naik" class="w-full bg-white active:border-0">
+                </div>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="tanggal-turun" class="text-sm">Tanggal Turun</label>
+                <div class=" border border-gray-400 rounded-md px-2 py-3.5">
+                    <input type="date" name="tanggal-turun" id="tanggal-turun" class="w-full bg-white active:border-0">
+                </div>
             </div>
         </div>
-        <div class="flex flex-col gap-2">
-            <label for="tanggal-naik" class="text-sm">Tanggal Naik</label>
-            <div class=" border border-gray-400 rounded-md px-2 py-3.5">
-                <input type="date" name="tanggal-naik" id="tanggal-naik" class="w-full bg-white active:border-0">
-            </div>
-        </div>
-        <div class="flex flex-col gap-2">
-            <label for="tanggal-turun" class="text-sm">Tanggal Turun</label>
-            <div class=" border border-gray-400 rounded-md px-2 py-3.5">
-                <input type="date" name="tanggal-turun" id="tanggal-turun" class="w-full bg-white active:border-0">
-            </div>
+        <div class="flex flex-col items-center mt-5">
+            <button class="btn bg-blue-700 border-0 text-white hover:bg-blue-600 min-h-8 h-8">Next</button>
         </div>
     </div>
     <div v-if="tabIndex == 1" class="w-full grid grid-cols-2 gap-5 mt-5 poppins text-black">
