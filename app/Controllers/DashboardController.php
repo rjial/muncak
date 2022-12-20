@@ -88,22 +88,39 @@ class DashboardController extends ResourceController
         return view("dashboard/pricingplan");
     }
 
-    // public function entryschedule($id)
-    // {
+    public function entry_schedule($id)
+    {
     
-    //     $key    = getenv('TOKEN_SECRET');
-    //     $header = $this->request->getServer('HTTP_AUTHORIZATION');
+        $key    = getenv('TOKEN_SECRET');
+        $header = $this->request->getServer('HTTP_AUTHORIZATION');
 
-    //     if (!$header) return $this->failUnauthorized('Token Required');
-    //     $token = explode(' ', $header)[1];
-    //     try {
-    //         $model = new GunungModel();
-    //         $data = $model->findAll();
-    //         return $this->respond($data, 200);;
-    //     } catch (\Throwable $th) {
-    //         return $this->fail('Invalid Token');
-    //     }
+        if (!$header) return $this->failUnauthorized('Token Required');
+        $token = explode(' ', $header)[1];
+        try {
 
-    // }
+        $model = new BookingModel();
+        $data = [
+            'id_users' => $this->request->getPost(''),
+            'id_jalur' => $this->request->getPost(''),
+            'tanggal_naik' => $this->request->getPost('tanggal_naik'),
+            'tanggal_turun' => $this->request->getPost('tanggal_turun')
+        ];
+        //$data = json_decode(file_get_contents("php://input"));
+        //$data = $this->request->getPost();
+        $model->insert($data);
+        $response = [
+            'status'   => 201,
+            'error'    => null,
+            'messages' => [
+                'success' => 'Data Saved'
+            ]
+        ];
+         
+        return $this->respondCreated($data, 201);
+        } catch (\Throwable $th) {
+            return $this->fail('Invalid Token');
+        }
+
+    }
 
 }
