@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Controllers;
-
+use CodeIgniter\API\ResponseTrait;
+use CodeIgniter\RESTful\ResourceController;
 use App\Controllers\BaseController;
 use App\Models\GunungModel;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
-class DashboardController extends BaseController
-{
+class DashboardController extends ResourceController
+{   
+    use ResponseTrait;
     public function __construct()
     {
         // helper('auth');
@@ -83,4 +87,23 @@ class DashboardController extends BaseController
         helper(['auth']);
         return view("dashboard/pricingplan");
     }
+
+    // public function entryschedule($id)
+    // {
+    
+    //     $key    = getenv('TOKEN_SECRET');
+    //     $header = $this->request->getServer('HTTP_AUTHORIZATION');
+
+    //     if (!$header) return $this->failUnauthorized('Token Required');
+    //     $token = explode(' ', $header)[1];
+    //     try {
+    //         $model = new GunungModel();
+    //         $data = $model->findAll();
+    //         return $this->respond($data, 200);;
+    //     } catch (\Throwable $th) {
+    //         return $this->fail('Invalid Token');
+    //     }
+
+    // }
+
 }
