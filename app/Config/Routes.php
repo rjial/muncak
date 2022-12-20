@@ -58,6 +58,8 @@ $routes->post('/api/gunung/add', 'GunungController::add');
 $routes->get('/dashboard/gunung/add', 'DashboardController::addgunung', ['as' => 'addgunung', 'filter' => 'auth']);
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);
 $routes->get('/dashboard/entry/(:num)', 'DashboardController::entry/$1', ['as' => 'entry', 'filter' => 'auth']);
+$routes->get('/dashboard/pricing/(:num)', 'DashboardController::pricingplan/$1', ['as' => 'pricingplan', 'filter' => 'auth']);
+
 
 
 /*

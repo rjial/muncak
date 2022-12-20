@@ -68,7 +68,6 @@ class DashboardController extends BaseController
         helper(['auth']);
         return view('gunung/addgunung');
     }
-
     public function history()
     {
         helper(['auth']);
@@ -79,5 +78,9 @@ class DashboardController extends BaseController
     {
         helper(['auth']);
         return view('history/detail');
+    }
+    public function pricingplan() {
+        helper(['auth']);
+        return view("dashboard/pricingplan");
     }
 }
