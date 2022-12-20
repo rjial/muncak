@@ -16,7 +16,7 @@
         <div class="self-stretch mx-10 h-0 border-2 border-solid border-blue-400 rounded-full"></div>
     </div>
     <!-- content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full poppins">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full poppins mx-auto">
         <div class=" border border-gray-400 text-black rounded-md" v-for="card in 3">
             <div class="p-5 flex flex-col gap-y-6 border-b border-gray-400">
                 <span class="block font-medium text-blue-600">Free</span>

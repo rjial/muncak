@@ -31,12 +31,14 @@ function getAuth() {
     $return = new stdClass();
     if ($user != null) {
         $return->username = $user['username'];
+        $return->nama = $user['nama_users'];
         $return->email = $user['email'];
         $return->role = $role;
         return $return;
     } else {
         delete_cookie('jwt');
         redirect()->route('signin');
+        $return->nama = "";
         $return->username = "";
         $return->email = "";
         $return->role = "";

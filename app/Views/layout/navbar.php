@@ -51,7 +51,7 @@
             <div class="dropdown dropdown-end">
                 <div tabindex="0" class="flex items-center space-x-3 cursor-pointer">
                     <img class="h-7 rounded-full border border-1 border-black" src="<?= base_url('images/placeholder.jpg') ?>" alt="">
-                    <span><?= getAuth()->username ?></span>
+                    <span><?= empty(getAuth()->nama) ? getAuth()->username : getAuth()->nama ?></span>
                 </div>
                 <ul tabindex="0" class="dropdown-content menu mt-4 p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a>Profile</a></li>

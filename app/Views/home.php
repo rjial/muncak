@@ -41,7 +41,7 @@
 <div class="relative w-full bg-white">
     <div class="mt-40 mx-auto w-full py-32">
         <p class="text-center font-semibold text-4xl text-black">Our Services</p>
-        <div class="grid grid-cols-3 gap-10 px-28 mx-auto mt-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 px-28 mx-auto mt-16">
             <div class="flex flex-col">
                 <div class="h-64 flex justify-center items-center">
                     <img class="h-full" src="<?= base_url('images/stationary.png') ?>" alt="">
@@ -67,9 +67,9 @@
     </div>
 </div>
 <div class=" bg-white w-full py-20">
-    <div class="px-64 mx-auto flex flex-col space-y-24">
+    <div class="px-36 lg:px-64 mx-auto flex flex-col space-y-24">
         <div class="flex justify-between items-center">
-            <div class="w-1/2 relative">
+            <div class="w-11/12 lg:w-1/2 relative">
                 <span class="text-9xl -top-14 -left-14 font-bold absolute z-0 text-slate-200">01</span>
                 <div class="flex flex-col space-y-3 z-10 relative">
                     <div class="relative flex items-center">
@@ -82,11 +82,11 @@
                 </div>
 
             </div>
-            <img src="<?= base_url('images/hero_2.png') ?>" alt="" srcset="" class="rounded-md drop-shadow-2xl drop-shadow-2xl">
+            <img src="<?= base_url('images/hero_2.png') ?>" alt="" srcset="" class="rounded-md drop-shadow-2xl drop-shadow-2xl hidden lg:block">
         </div>
         <div class="flex justify-between items-center">
-            <img src="<?= base_url('images/hero_3.png') ?>" alt="" srcset="" class="rounded-md drop-shadow-2xl">
-            <div class="w-1/2 relative">
+            <img src="<?= base_url('images/hero_3.png') ?>" alt="" srcset="" class="rounded-md drop-shadow-2xl  hidden lg:block">
+            <div class="w-11/12 lg:w-1/2 relative">
                 <span class="text-9xl -top-14 -left-14 font-bold absolute z-0 text-slate-200">02</span>
                 <div class="flex flex-col space-y-3 z-10 relative">
                     <div class="relative flex items-center">
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="flex justify-between items-center">
-            <div class="w-1/2 relative">
+            <div class="w-11/12 lg:w-1/2 relative">
                 <span class="text-9xl -top-14 -left-14 font-bold absolute z-0 text-slate-200">03</span>
                 <div class="flex flex-col space-y-3 z-10 relative">
                     <div class="relative flex items-center">
@@ -113,7 +113,7 @@
                 </div>
 
             </div>
-            <img src="<?= base_url('images/hero_4.png') ?>" alt="" srcset="" class="rounded-md drop-shadow-2xl">
+            <img src="<?= base_url('images/hero_4.png') ?>" alt="" srcset="" class="rounded-md drop-shadow-2xl hidden lg:block">
         </div>
     </div>
 </div>
