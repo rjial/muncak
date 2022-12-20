@@ -23,7 +23,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 .bg-homedash {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('/images/bg_homedash.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('/images/bg_homedash.png');
 }
 .bg-soft-blue {
     background: #EEF1FF;

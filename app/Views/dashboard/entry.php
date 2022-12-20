@@ -71,7 +71,7 @@
             <div class="flex flex-col gap-2">
                 <label for="provinsi" class="text-sm">Provinsi</label>
                 <div class="border border-gray-400 rounded-md px-2 py-3.5">
-                    <select name="provinsi" id="provinsi" class="w-full bg-white">
+                    <select name="provinsi" id="provinsi" class="w-full bg-white" @change="changeProvinsi" v-model="model.provinsi">
                         <option value="">Pilih Provinsi</option>
                         <option v-for="provinsi in dataProvinsi" :key="provinsi.id" :value="provinsi.id">{{provinsi.nama}}</option>
                     </select>
@@ -80,9 +80,9 @@
             <div class="flex flex-col gap-2">
                 <label for="kota" class="text-sm">Kota</label>
                 <div class="border border-gray-400 rounded-md px-2 py-3.5">
-                    <select name="kota" id="kota" class="w-full bg-white">
+                    <select name="kota" id="kota" class="w-full bg-white" v-model="model.kota" @change="changeKota">
                         <option value="">Pilih Kota</option>
-                        <option v-for="provinsi in dataProvinsi" :key="provinsi.id" :value="provinsi.id">{{provinsi.nama}}</option>
+                        <option v-for="kota in dataKota" :key="kota.id" :value="kota.id">{{kota.nama}}</option>
                     </select>
                 </div>
             </div>
@@ -91,18 +91,18 @@
             <div class="flex flex-col gap-2">
                 <label for="kecamatan" class="text-sm">Kecamatan</label>
                 <div class="border border-gray-400 rounded-md px-2 py-3.5">
-                    <select name="kecamatan" id="kecamatan" class="w-full bg-white">
+                    <select name="kecamatan" id="kecamatan" class="w-full bg-white"  v-model="model.kecamatan" @change="changeKecamatan">
                         <option value="">Pilih Kecamatan</option>
-                        <option v-for="provinsi in dataProvinsi" :key="provinsi.id" :value="provinsi.id">{{provinsi.nama}}</option>
+                        <option v-for="kecamatan in dataKecamatan" :key="kecamatan.id" :value="kecamatan.id">{{kecamatan.nama}}</option>
                     </select>
                 </div>
             </div>
             <div class="flex flex-col gap-2">
                 <label for="kelurahan" class="text-sm">Kelurahan / Desa</label>
                 <div class="border border-gray-400 rounded-md px-2 py-3.5">
-                    <select name="kelurahan" id="kelurahan" class="w-full bg-white">
+                    <select name="kelurahan" id="kelurahan" class="w-full bg-white"  v-model="model.kelurahan">
                         <option value="">Pilih Kelurahan</option>
-                        <option v-for="provinsi in dataProvinsi" :key="provinsi.id" :value="provinsi.id">{{provinsi.nama}}</option>
+                        <option v-for="kelurahan in dataKelurahan" :key="kelurahan.id" :value="kelurahan.id">{{kelurahan.nama}}</option>
                     </select>
                 </div>
             </div>
@@ -169,7 +169,16 @@
         data() {
             return {
                 tabIndex: 0,
-                dataProvinsi: []
+                dataProvinsi: [],
+                dataKota: [],
+                dataKecamatan: [],
+                dataKelurahan: [],
+                model: {
+                    provinsi: 1,
+                    kota: 1,
+                    kecamatan: 1,
+                    kelurahan: 1
+                }
             }
         },
         mounted() {
@@ -188,6 +197,30 @@
                     .then((data) => {
                         console.log(data.data)
                         this.dataProvinsi = data.data
+                    })
+            },
+            changeProvinsi() {
+                console.log(this.model.provinsi)
+                axios.get(`https://ibnux.github.io/data-indonesia/kabupaten/${this.model.provinsi}.json`)
+                    .then((data) => {
+                        console.log(data.data)
+                        this.dataKota = data.data
+                    })
+            },
+            changeKota() {
+                console.log(this.model.kota)
+                axios.get(`https://ibnux.github.io/data-indonesia/kecamatan/${this.model.kota}.json`)
+                    .then((data) => {
+                        console.log(data.data)
+                        this.dataKecamatan = data.data
+                    })
+            },
+            changeKecamatan() {
+                console.log(this.model.kecamatan)
+                axios.get(`https://ibnux.github.io/data-indonesia/kelurahan/${this.model.kecamatan}.json`)
+                    .then((data) => {
+                        console.log(data.data)
+                        this.dataKelurahan = data.data
                     })
             }
         }

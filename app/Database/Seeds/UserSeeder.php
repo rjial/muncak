@@ -10,7 +10,6 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'id_users' => '1',
                 'username' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => password_hash('admin123', PASSWORD_BCRYPT),
@@ -24,7 +23,6 @@ class UserSeeder extends Seeder
                 'id_role' => '1',
             ],
             [
-                'id_users' => '2',
                 'username' => 'aminmountguard',
                 'email' => 'amin@gmail.com',
                 'password' => password_hash('amin123', PASSWORD_BCRYPT),
@@ -38,7 +36,6 @@ class UserSeeder extends Seeder
                 'id_role' => '2',
             ],
             [
-                'id_users' => '3',
                 'username' => 'ritamountguard',
                 'email' => 'rita@gmail.com',
                 'password' => password_hash('rita1234', PASSWORD_BCRYPT),
@@ -52,7 +49,6 @@ class UserSeeder extends Seeder
                 'id_role' => '2',
             ],
             [
-                'id_users' => '4',
                 'username' => 'astrajingga1',
                 'email' => 'astra@gmail.com',
                 'password' => password_hash('astra1234', PASSWORD_BCRYPT),
@@ -66,7 +62,6 @@ class UserSeeder extends Seeder
                 'id_role' => '3',
             ],
             [
-                'id_users' => '5',
                 'username' => 'roykiyoshi11',
                 'email' => 'royp@gmail.com',
                 'password' => password_hash('roy12345', PASSWORD_BCRYPT),
