@@ -38,6 +38,10 @@ class Gunung extends Migration
             'tanggal_akhir'        => [
                 'type'              => 'DATE'
             ],
+            'lokasi'        => [
+                'type'              => 'VARCHAR',
+                'constraint'        => 200
+            ],
         ]);
 
         $this->forge->addPrimaryKey('id_gunung');
