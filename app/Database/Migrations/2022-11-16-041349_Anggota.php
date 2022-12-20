@@ -15,10 +15,6 @@ class Anggota extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'id_tim' => [
-                'type'              => 'INT',
-                'constraint'        => 11,
-            ],
             'nama_anggota'              => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 11,
