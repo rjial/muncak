@@ -39,8 +39,8 @@ class Gunung extends Migration
                 'type'              => 'DATE'
             ],
             'lokasi'        => [
-                'type'              => 'VARCHAR',
-                'constraint'        => 200
+            'type'              => 'VARCHAR',
+            'constraint'        => 200
             ],
         ]);
 
