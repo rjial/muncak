@@ -29,6 +29,7 @@
             <li><a href="<?= url_to('Home::index') ?>">Home</a></li>
             <?php if (isLogged()) : ?>
                 <li><a href="<?= url_to('dashboard') ?>">Dashboard</a></li>
+                <li><a href="<?= url_to('survey_index') ?>">Survey</a></li>
             <?php endif; ?>
             <li><a>Tutorial</a></li>
             <li><a>Check Booking</a></li>

@@ -69,7 +69,8 @@ $routes->get('/dashboard/entry/(:num)/schedule/', 'DashboardController::entry_sc
 $routes->post('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_leader/$1', ['as' => 'entryleader', 'filter' =>'auth']);
 $routes->get('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_leader_get/$1', ['as' => 'entryleaderget', 'filter' =>'auth']);
 
-$routes->get('/survey', 'SurveyController::index', ['as' => 'survey.index', 'filter' =>'auth']);
+$routes->get('/survey', 'SurveyController::index', ['as' => 'survey_index', 'filter' =>'auth']);
+$routes->post('/survey', 'SurveyController::hasil', ['as' => 'survey_hasil', 'filter' =>'auth']);
 
 
 $routes->get('/bootstrap', 'DebugController::bootstrap', ['as' => 'debug.bootstrap']);
