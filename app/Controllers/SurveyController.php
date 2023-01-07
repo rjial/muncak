@@ -8,6 +8,6 @@ class SurveyController extends BaseController
 {
     public function index()
     {
-        //
+        return view("survey.index");
     }
 }
