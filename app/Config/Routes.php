@@ -72,6 +72,9 @@ $routes->get('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_lead
 $routes->get('/survey', 'SurveyController::index', ['as' => 'survey.index', 'filter' =>'auth']);
 
 
+$routes->get('/bootstrap', 'DebugController::bootstrap', ['as' => 'debug.bootstrap']);
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
