@@ -19,11 +19,12 @@ class Booking extends Migration
                 'type'              => 'INT',
                 'constraint'        => 11,
                 'unsigned'          => true,
+                'null'              => true
             ],
             'id_users'              => [
-            'type'              => 'INT',
-            'constraint'        => 11,
-            'unsigned'          => true,
+                'type'              => 'INT',
+                'constraint'        => 11,
+                'unsigned'          => true,
             ],
             'tanggal_naik'              => [
                 'type'              => 'DATETIME',
@@ -35,7 +36,7 @@ class Booking extends Migration
             ]
         ]);
 
-        
+
         $this->forge->addPrimaryKey('id_booking');
         $this->forge->addForeignKey('id_jalur', 'jalur', 'id_jalur', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_users', 'users', 'id_users', 'CASCADE', 'CASCADE');
