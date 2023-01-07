@@ -4,6 +4,7 @@ use App\Models\RoleModel;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use \App\Models\UsersModel;
+use \CodeIgniter\HTTP\Response;
 
 function isLogged()
 {
@@ -21,8 +22,10 @@ function isLogged()
     } else {
         $request = \Config\Services::request();
         $header = $request->getServer('HTTP_AUTHORIZATION');
-        $token = explode(' ', $header)[1];
-        $data = checkJWT($token);
+        if($header != null) {
+            $token = explode(' ', $header)[1];
+            $data = checkJWT($token);
+        }  
     }
     try {
         $user = (new UsersModel())->where('id_users', $data->id)->where('email', $data->email)->first();
@@ -34,9 +37,15 @@ function isLogged()
 }
 function getAuth()
 {
-    if (isLogged() == false) return false;
     helper('cookie');
     $cookie = get_cookie('jwt');
+    if (isLogged() == false) {
+        if ($cookie != null) {
+            redirect('logout');
+        }
+        return false;
+    }
+    
     $data = new stdClass();
     $key    = getenv('TOKEN_SECRET');
     if ($cookie != "") {

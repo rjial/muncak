@@ -27,7 +27,7 @@
     </div>
     <div class="h-screen bg-white flex justify-center z-20 items-center px-16 lg:px-28 lg:w-3/5">
         <div class="flex flex-col justify-between space-y-4">
-            <span class="merriweather lg:text-6xl sm:text-5xl text-4xl text-black sm:leading-normal lg:leading-relaxed">
+            <span class="merriweather lg:text-5xl sm:text-4xl text-3xl text-black sm:leading-normal lg:leading-relaxed">
             Explore the beauty of nature on a hiking adventure with us!
             </span>
             <span class="text-lg text-gray-600">
