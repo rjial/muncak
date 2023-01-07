@@ -58,12 +58,18 @@ $routes->get('/api/jalur/', 'GunungController::jalurgunung');
 // sementara untuk edit halaman detail
 $routes->get('/dashboard/gunung/add', 'DashboardController::addgunung', ['as' => 'addgunung', 'filter' => 'auth']);
 $routes->get('/dashboard/gunung/(:num)', 'DashboardController::detailgunung/$1', ['as' => 'gunung', 'filter' => 'auth']);
+$routes->post('/dashboard/gunung/(:num)/book', 'DashboardController::booknow/$1', ['as' => 'booknow']);
+$routes->get('/dashboard/gunung/(:num)/jalur', 'DashboardController::jalurgunung/$1', ['as' => 'jalurgunung']);
 $routes->get('/dashboard/entry/(:num)', 'DashboardController::entry/$1', ['as' => 'entry', 'filter' => 'auth']);
 $routes->get('/dashboard/pricing/(:num)', 'DashboardController::pricingplan/$1', ['as' => 'pricingplan', 'filter' => 'auth']);
 
 //sementara buat entry data
 $routes->post('/dashboard/entry/(:num)/schedule/', 'DashboardController::entry_schedule/$1', ['as' => 'entryschedule', 'filter' =>'auth']);
+$routes->get('/dashboard/entry/(:num)/schedule/', 'DashboardController::entry_schedule_get/$1', ['as' => 'entryscheduleget', 'filter' =>'auth']);
 $routes->post('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_leader/$1', ['as' => 'entryleader', 'filter' =>'auth']);
+$routes->get('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_leader_get/$1', ['as' => 'entryleaderget', 'filter' =>'auth']);
+
+$routes->get('/survey', 'SurveyController::index', ['as' => 'survey.index', 'filter' =>'auth']);
 
 
 /*
