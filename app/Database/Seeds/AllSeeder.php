@@ -12,5 +12,6 @@ class AllSeeder extends Seeder
         $this->call("UserSeeder");
         $this->call("GunungSeeder");
         $this->call("JalurSeeder");
+        $this->call("SubscriptionSeeder");
     }
 }
