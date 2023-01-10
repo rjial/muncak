@@ -38,6 +38,7 @@ function isLogged()
 function getAuth()
 {
     helper('cookie');
+    $db = \Config\Database::connect();
     $cookie = get_cookie('jwt');
     if (isLogged() == false) {
         if ($cookie != null) {
@@ -60,6 +61,10 @@ function getAuth()
     }
     $user = (new UsersModel())->where('id_users', $data->id)->where('email', $data->email)->first();
     $role = (new RoleModel())->where('id_role', $user['id_role'])->first();
+    $subs = $db->table("subscription")->where('id_subs', $user['id_subs'])->get()->getResultObject();
+    if (empty($subs) || sizeof($subs) == 0) {
+        $subs = null;
+    }
     $return = new stdClass();
     if ($user != null) {
         $return->id = $user['id_users'];
@@ -67,6 +72,12 @@ function getAuth()
         $return->nama = $user['nama_users'];
         $return->email = $user['email'];
         $return->role = $role;
+        if ($user['id_subs'] != null || $subs != null) {
+            $return->subs = $subs;
+        } else {
+            $return->subs = null;
+
+        }
         return $return;
     } else {
         delete_cookie('jwt');
@@ -76,6 +87,7 @@ function getAuth()
         $return->username = "";
         $return->email = "";
         $return->role = "";
+        $return->subs = null;
         return redirect()->route('signin');
     }
 }

@@ -15,11 +15,16 @@ class DashboardController extends ResourceController
     use ResponseTrait;
     public function __construct()
     {
+        
         // helper('auth');
     }
     public function index()
     {
+        if (getAuth()->subs == null) {
+            return redirect('subscription.index');
+        }
         helper(['auth']);
+        
         // dd(isLogged());
         return view('dashboard/index');
     }

@@ -72,6 +72,8 @@ $routes->get('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_lead
 $routes->get('/survey', 'SurveyController::index', ['as' => 'survey_index', 'filter' =>'auth']);
 $routes->post('/survey', 'SurveyController::hasil', ['as' => 'survey_hasil', 'filter' =>'auth']);
 
+$routes->get('/subscription', 'SubcriptionController::index', ['as' => 'subscription.index', 'filter' =>'auth']);
+$routes->get('/subscription/(:num)', 'SubcriptionController::item/$1', ['as' => 'subscription.item', 'filter' =>'auth']);
 
 $routes->get('/bootstrap', 'DebugController::bootstrap', ['as' => 'debug.bootstrap']);
 

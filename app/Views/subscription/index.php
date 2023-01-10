@@ -16,39 +16,31 @@
         <div class="self-stretch mx-10 h-0 border-2 border-solid border-blue-400 rounded-full"></div>
     </div>
     <!-- content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full poppins mx-auto">
-        <div class=" border border-gray-400 text-black rounded-md" v-for="card in 3">
-            <div class="p-5 flex flex-col gap-y-6 border-b border-gray-400">
-                <span class="block font-medium text-blue-600">Free</span>
-                <span class="block text-xl"><b class="text-4xl font-bold">Rp0</b>/hiking</span>
-                <button class="bg-blue-500 text-white block px-6 py-3 rounded-md">Buy Now</button>
-            </div>
-            <div class="p-5 flex flex-col gap-y-4">
-                <span class="font-medium">What's included :</span>
-                <div class="flex gap-x-3 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" fill="none" viewBox="0 0 23 16">
-                        <path stroke="#5CDB5C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M21.003 1.201 7.802 14.403 1.8 8.402" />
-                    </svg>
-                    <span class="text-gray-600">Lorem ipsum</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full content-center justify-items-stretch poppins mx-auto">
+        <?php foreach ($subs as $sub) : ?>
+            <div class="border border-gray-400 text-black rounded-md">
+                <div class="p-5 flex flex-col gap-y-6 border-b border-gray-400">
+                    <span class="block font-medium text-blue-600"><?= $sub->nama_subs ?></span>
+                    <span class="block text-xl"><b class="text-4xl font-bold">Rp<?= $sub->harga_subs ?></b></span>
+                    <a href="<?= url_to("subscription.item", $sub->id_subs) ?>" class="bg-blue-500 text-center text-white block px-6 py-3 rounded-md">Buy Now</a>
                 </div>
-                <div class="flex gap-x-3 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" fill="none" viewBox="0 0 23 16">
-                        <path stroke="#5CDB5C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M21.003 1.201 7.802 14.403 1.8 8.402" />
-                    </svg>
-                    <span class="text-gray-600">Lorem ipsum</span>
-                </div>
-                <div class="flex gap-x-3 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" fill="none" viewBox="0 0 23 16">
-                        <path stroke="#5CDB5C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M21.003 1.201 7.802 14.403 1.8 8.402" />
-                    </svg>
-                    <span class="text-gray-600">Lorem ipsum</span>
+                <div class="p-5 flex flex-col gap-y-4">
+                    <span class="font-medium">What's included :</span>
+                    <?php foreach (preg_split("/\r\n|\n|\r/", $sub->keterangan_subs) as $ket) : ?>
+                        <div class="flex gap-x-3 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="16" fill="none" viewBox="0 0 23 16">
+                                <path stroke="#5CDB5C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M21.003 1.201 7.802 14.403 1.8 8.402" />
+                            </svg>
+                            <span class="text-gray-600"><?= $ket ?></span>
+                        </div>
+                    <?php endforeach ?>
                 </div>
             </div>
-        </div>
-        
+        <?php endforeach ?>
+
     </div>
     <div class="mx-auto mt-10">
-        <a href="#" class="btnt btn-ghost px-6 py-3 rounded-md uppercase text-blue-500 font-bold">Skip Continue To Payment</a>
+        <a href="<?= url_to("subscription.item", $subs[0]->id_subs) ?>" class="btnt btn-ghost px-6 py-3 rounded-md uppercase text-blue-500 font-bold">Skip Continue To Payment</a>
     </div>
 </div>
 
