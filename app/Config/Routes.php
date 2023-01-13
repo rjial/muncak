@@ -68,6 +68,9 @@ $routes->post('/dashboard/entry/(:num)/schedule/', 'DashboardController::entry_s
 $routes->get('/dashboard/entry/(:num)/schedule/', 'DashboardController::entry_schedule_get/$1', ['as' => 'entryscheduleget', 'filter' =>'auth']);
 $routes->post('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_leader/$1', ['as' => 'entryleader', 'filter' =>'auth']);
 $routes->get('/dashboard/entry/(:num)/leader/', 'DashboardController::entry_leader_get/$1', ['as' => 'entryleaderget', 'filter' =>'auth']);
+$routes->post('/dashboard/entry/(:num)/member/', 'DashboardController::entry_member/$1', ['as' => 'entrymember', 'filter' =>'auth']);
+$routes->get('/dashboard/entry/(:num)/member/', 'DashboardController::entry_member_get/$1', ['as' => 'entrymemberget', 'filter' =>'auth']);
+$routes->get('/dashboard/entry/(:num)/proses/', 'DashboardController::entry_proses/$1', ['as' => 'entryproses', 'filter' =>'auth']);
 
 $routes->get('/survey', 'SurveyController::index', ['as' => 'survey_index', 'filter' =>'auth']);
 $routes->post('/survey', 'SurveyController::hasil', ['as' => 'survey_hasil', 'filter' =>'auth']);

@@ -46,22 +46,22 @@
                 <div class="h-64 flex justify-center items-center">
                     <img class="h-full" src="<?= base_url('images/stationary.png') ?>" alt="">
                 </div>
-                <span class="text-xl text-black mt-8 text-center font-semibold">Hiking Planning</span>
-                <span class="mt-5 text-center text-black font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis repellendus reiciendis atque, adipisci, consequatur accusamus hic sint unde quos ullam at cumque itaque libero quia exercitationem dolorum nisi obcaecati.</span>
+                <span class="text-xl text-black mt-8 text-center font-semibold">Survey</span>
+                <span class="mt-5 text-center text-black font-normal">Survey kesehatan pada pendaki untuk memberikan penjelasan dan kondisi sebelum melakukan pendakian</span>
             </div>
             <div class="flex flex-col">
                 <div class="h-64 flex justify-center items-center">
                     <img class="h-full" src="<?= base_url('images/selfieboy.png') ?>" alt="">
                 </div>
-                <span class="text-xl text-black mt-8 text-center font-semibold">Hiking Planning</span>
-                <span class="mt-5 text-center text-black font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis repellendus reiciendis atque, adipisci, consequatur accusamus hic sint unde quos ullam at cumque itaque libero quia exercitationem dolorum nisi obcaecati.</span>
+                <span class="text-xl text-black mt-8 text-center font-semibold">PEMESANAN TIKET</span>
+                <span class="mt-5 text-center text-black font-normal">Pemesanan tiket jadi lebih mudah dengan menggunakan sistem online</span>
             </div>
             <div class="flex flex-col">
                 <div class="h-64 flex justify-center items-center">
                     <img class="h-full" src="<?= base_url('images/travelbag.png') ?>" alt="">
                 </div>
-                <span class="text-xl text-black mt-8 text-center font-semibold">Hiking Planning</span>
-                <span class="mt-5 text-center text-black font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis repellendus reiciendis atque, adipisci, consequatur accusamus hic sint unde quos ullam at cumque itaque libero quia exercitationem dolorum nisi obcaecati.</span>
+                <span class="text-xl text-black mt-8 text-center font-semibold">INFORMASI GUNUNG</span>
+                <span class="mt-5 text-center text-black font-normal">Informasi tentang kondisi dan situasi gunung di Indonesia</span>
             </div>
         </div>
     </div>

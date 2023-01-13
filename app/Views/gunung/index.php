@@ -124,7 +124,7 @@ $gununggg = [
                 .then(data => {
                     // let idGunung = window.location.pathname.split('/')[3]
                     // window.location.href = window.location.origin + '/dashboard/entry/' + idGunung
-                    window.location.href = <?= url_to('entry', $gunung['id_gunung']) ?>
+                    window.location.href = "<?= url_to('entry', $gunung['id_gunung']) ?>"
                 })
             }
         }
