@@ -109,8 +109,15 @@ class DashboardController extends ResourceController
             'id_users' => getAuth()->id
         ];
         $insert = $builder->insert($data);
+        $builder_payment = $db->table('payment_history');
+        $data_payment = [
+            'date' => date('Y-m-d'),
+            'status' => 'In Progress',
+            'id_booking' => $db->insertID()
+        ];
+        $insert_payment = $builder_payment->insert($data_payment);
         $response = [];
-        if ($insert) {
+        if ($insert && $insert_payment) {
             $response = [
                 'status'   => 201,
                 'error'    => false,
@@ -242,6 +249,7 @@ class DashboardController extends ResourceController
             $teamid = 0;
             $teaminsert = null;
             $response = [];
+            
             if ($team == null) {
                 $teaminsert = $team_builder->set('id_pemimpin', null)->insert();
                 if ($teaminsert == true) {
@@ -284,15 +292,25 @@ class DashboardController extends ResourceController
                     ];
                 }
             } else {
+                $data_tim = $team_builder->where('id_tim', $team);
+                
                 $leader_builder = $db->table('pemimpin_tim');
-                $teamrow = $team_builder->where('id_tim', $team)->select()->get()->getResultObject()[0];
-                $leader_builder->where('id_pemimpin', $teamrow->id_pemimpin);
-                $teamleaderupdated = $leader_builder->update($leader_data);
+                $result = null;
+                if ($data_tim->get()->getResultObject()[0]->id_pemimpin == null) {
+                    $leader_insert = $leader_builder->insert($leader_data);
+                    $teamrow = $team_builder->where('id_tim', $team)->update(['id_pemimpin' => $db->insertID()]);
+                    $result = $teamrow;
+                } else {
+                    $teamrow = $team_builder->where('id_tim', $team)->select()->get()->getResultObject()[0];
+                    $leader_builder->where('id_pemimpin', $teamrow->id_pemimpin);
+                    $teamleaderupdated = $leader_builder->update($leader_data);
+                    $result = $teamleaderupdated;
+                }
 
                 $response = [
                     'status'   => 200,
                     'error'    => false,
-                    'data'     => $teamleaderupdated
+                    'data'     => $result
                 ];
             }
 
@@ -331,5 +349,47 @@ class DashboardController extends ResourceController
         }
         return $this->respondCreated($response, $response['status']);
         // return $this->respondCreated($response, 200);
+    }
+    public function entry_member($id) {
+        $db = \Config\Database::connect();
+        $builder = $db->table('booking');
+        $booking = $builder->where('id_users', getauth()->id)->get()->getFirstRow();
+        $tableanggota = $db->table('anggota');
+        foreach($tableanggota->get()->getRowObject() as $book) {
+            $tableanggota->delete(['id_tim' => $booking->id_tim]);
+        }
+        $arr_member = json_decode($this->request->getPost('anggota'));
+        foreach($arr_member as $member) {
+            $data = [
+                'nama_anggota' => $member->nama, 
+                'no_identitas' => $member->no_identitas,
+                'jk' => $member->jenis_kelamin ? "Laki-laki" : "Perempuan",
+                'no_hp' => $member->no_hp,
+                'id_tim' => $booking->id_tim
+            ];
+            $tableanggota->insert($data);
+        }
+        return $this->respondCreated(['status' => true, 'message' => 'Anggota Berhasil ditambah'], 200);
+    }
+    public function entry_member_get($id) {
+        $db = \Config\Database::connect();
+        $builder = $db->table('booking');
+        $booking = $builder->where('id_users', getauth()->id)->get()->getFirstRow();
+        $tableanggota = $db->table('anggota');
+        $data = [
+            'anggota' => $tableanggota->where('id_tim', $booking->id_tim)->get()->getResultObject(),
+            'status' => true
+        ];
+        return $this->respondCreated(['data' => $data], 200);
+    }
+    public function entry_proses($id) {
+        $db = \Config\Database::connect();
+        $builder = $db->table('booking');
+        $booking = $builder->where('id_users', getauth()->id)->get()->getFirstRow();
+        $status = true;
+        if(sizeof($booking = $builder->where('id_users', getauth()->id)->get()->getRowObject()) > 0) {
+            $status = true;
+        }
+        
     }
 }
