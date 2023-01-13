@@ -24,10 +24,41 @@
             <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
                 Waktu Pelayanan Verifikasi Pembayaran dilakukan pada hari Senin s/d Jumat jam 08.00 s/d 15.00 WIB. Proses maksimal 1x24 jam (hari kerja) setelah melakukan pembayaran.
             </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Booking dilakukan maksimal 2 (dua) hari sebelum melakukan pendakian (H-2).
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Waktu pelayanan perizinan pendakian pada setiap pos pendakian 07.00 - 17.00 WIB.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Batas lama pendakian yang diizinkan maksimal adalah 3 (tiga) hari dan 2 (dua) malam.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Pendaftaran diberlakukan bagi calon pendaki, baik nusantara maupun mancanegara.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Pendaftaran hanya dilakukan secara online.
+            </div>
         </div>
         <div class="soft-shadow-2 p-4 flex flex-col rounded-lg">
-            <div class="poppins font-bold text-slate-700 tracking-wide">TARIF DAN PEMBAYARAN KARCIS</div>
+            <div class="poppins font-bold text-slate-700 tracking-wide">LARANGAN DAN HIMBAUAN PENDAKIAN</div>
             <div class="divider mt-1 mb-1"></div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Perhatikan kelengkapan pendakian sebelum melakukan kegiatan pendakian.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Dilarang keras membuang sampah sembarangan di sepanjang jalur pendakian.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+                Dilarang memisahkan diri / meninggalkan rombongan pendakian.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+            Pendaki harus tetap berjalan pada jalur yang telah ditentukan dan harus mematuhi rekomendasi batas aman pendakian yang diberikan.
+            </div>
+            <div class="w-full bg-slate-100 mb-1 p-3 text-sm font-medium text-gray-500 leading-6">
+            Dilarang memaksakan diri untuk melanjutkan perjalanan jika kondisi dan situasi tidak memungkinkan (kesehatan, cuaca, keamanan).
+            </div>
+            
         </div>
         <?php if ($isGunung) :?>
         <div class="form-control flex flex-row justify-start">
