@@ -16,7 +16,7 @@ class DashboardController extends ResourceController
     public function __construct()
     {
         
-        // helper('auth');
+        helper('auth');
     }
     public function index()
     {
@@ -87,7 +87,15 @@ class DashboardController extends ResourceController
     public function history()
     {
         helper(['auth']);
-        return view('history/index');
+        $db = \Config\Database::connect();
+        $builder = $db->table('payment_history');
+        $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*');
+        $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
+        $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
+        $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
+        $data = $builder->get()->getResultObject();
+        // dd($data);
+        return view('history/index', ['payments' => $data]);
     }
 
     public function detail_history()
@@ -390,8 +398,12 @@ class DashboardController extends ResourceController
         $builder = $db->table('booking');
         $booking = $builder->where('id_users', getAuth()->id)->get()->getFirstRow();
         $status = true;
-        if(sizeof($builder->where('id_users', getAuth()->id)->get()->getRowObject()) > 0) {
+        $tablepayment = $db->table('payment_history');
+        // dd($booking);
+        if ($tablepayment->where('id_booking', $booking->id_booking)->update(['status' =>'Menunggu Pembayaran'])) {
             $status = true;
+        } else {
+            $status = false;
         }
         if($status) {
             return $this->response->redirect(url_to('history'));
