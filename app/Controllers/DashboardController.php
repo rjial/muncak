@@ -165,7 +165,7 @@ class DashboardController extends ResourceController
             ];
             $db = \Config\Database::connect();
             $builder = $db->table('booking');
-            $booking = $builder->where('id_users', getauth()->id);
+            $booking = $builder->where('id_users', getAuth()->id);
             // return $this->respondCreated($booking, 200);
             // return $this->respondCreated();
             $update = "";
@@ -206,7 +206,7 @@ class DashboardController extends ResourceController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('booking');
-        $booking = $builder->where('id_users', getauth()->id);
+        $booking = $builder->where('id_users', getAuth()->id);
         $response = [];
         if ($booking->countAll() > 0) {
             $data = $booking->get()->getResultObject();
@@ -228,7 +228,7 @@ class DashboardController extends ResourceController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('booking');
-        $booking = $builder->where('id_users', getauth()->id);
+        $booking = $builder->where('id_users', getAuth()->id);
         if ($booking->countAll() > 0) {
             $leader_data = [
                 'nama_pemimpin_tim'     => $this->request->getPost('nama_pemimpin'),
@@ -328,7 +328,7 @@ class DashboardController extends ResourceController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('booking');
-        $booking = $builder->where('id_users', getauth()->id);
+        $booking = $builder->where('id_users', getAuth()->id);
         $response = [];
         if ($booking->countAll() > 0) {
             $booking->join("tim", 'tim.id_tim = booking.id_tim');
@@ -353,10 +353,12 @@ class DashboardController extends ResourceController
     public function entry_member($id) {
         $db = \Config\Database::connect();
         $builder = $db->table('booking');
-        $booking = $builder->where('id_users', getauth()->id)->get()->getFirstRow();
+        $booking = $builder->where('id_users', getAuth()->id)->get()->getFirstRow();
         $tableanggota = $db->table('anggota');
-        foreach($tableanggota->get()->getRowObject() as $book) {
-            $tableanggota->delete(['id_tim' => $booking->id_tim]);
+        if (sizeof($tableanggota->get()->getResultObject()) > 0) {
+            foreach($tableanggota->get()->getResultObject() as $book) {
+                $tableanggota->delete(['id_tim' => $booking->id_tim]);
+            }
         }
         $arr_member = json_decode($this->request->getPost('anggota'));
         foreach($arr_member as $member) {
@@ -370,11 +372,12 @@ class DashboardController extends ResourceController
             $tableanggota->insert($data);
         }
         return $this->respondCreated(['status' => true, 'message' => 'Anggota Berhasil ditambah'], 200);
+        // return $this->respondCreated($arr_member, 200);
     }
     public function entry_member_get($id) {
         $db = \Config\Database::connect();
         $builder = $db->table('booking');
-        $booking = $builder->where('id_users', getauth()->id)->get()->getFirstRow();
+        $booking = $builder->where('id_users', getAuth()->id)->get()->getFirstRow();
         $tableanggota = $db->table('anggota');
         $data = [
             'anggota' => $tableanggota->where('id_tim', $booking->id_tim)->get()->getResultObject(),
@@ -385,10 +388,15 @@ class DashboardController extends ResourceController
     public function entry_proses($id) {
         $db = \Config\Database::connect();
         $builder = $db->table('booking');
-        $booking = $builder->where('id_users', getauth()->id)->get()->getFirstRow();
+        $booking = $builder->where('id_users', getAuth()->id)->get()->getFirstRow();
         $status = true;
-        if(sizeof($booking = $builder->where('id_users', getauth()->id)->get()->getRowObject()) > 0) {
+        if(sizeof($builder->where('id_users', getAuth()->id)->get()->getRowObject()) > 0) {
             $status = true;
+        }
+        if($status) {
+            return $this->response->redirect(url_to('history'));
+        } else {
+            return $this->response->redirect(url_to('entry', $id));
         }
         
     }

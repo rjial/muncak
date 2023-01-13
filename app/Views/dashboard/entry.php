@@ -173,7 +173,7 @@
                 </button>
             </div>
         </div>
-        <a href="" class="flex justify-center align-center primary-color-bg p-4 mt-4 font-medium rounded text-white poppins">Continue to Payment</a>
+        <a href="<?= url_to('entryproses', $id) ?>" class="flex justify-center align-center primary-color-bg p-4 mt-4 font-medium rounded text-white poppins">Continue to Payment</a>
     </div>
 </div>
 
@@ -300,51 +300,54 @@
                                     } = res.data
                                     Cookies.set('tabIndex', newTab)
                                     this.tabIndex = newTab
-                                    this.model.nama_ketua = data.nama_pemimpin_tim
-                                    this.model.no_identitas = data.no_identitas
-                                    this.model.tempat_lahir = data.tempat_lahir
-                                    this.model.tanggal_lahir = (new Date(data.tanggal_lahir)).toISOString().split('T')[0]
-                                    this.model.provinsi
-                                    axios.get('https://ibnux.github.io/data-indonesia/provinsi.json')
-                                        .then((dataProvinsi) => {
-                                            // console.log(data.data)
-                                            this.dataProvinsi = dataProvinsi.data
-                                            return dataProvinsi
-                                        })
-                                        .then((setData) => {
-                                            this.model.provinsi = data.provinsi
-                                        })
-                                        .then(() => {
-                                            axios.get(`https://ibnux.github.io/data-indonesia/kabupaten/${this.model.provinsi}.json`)
-                                                .then((dataKab) => {
-                                                    this.dataKota = dataKab.data
-                                                })
-                                                .then(() => {
-                                                    this.model.kota = data.kota
-                                                })
-                                                .then(() => {
-                                                    axios.get(`https://ibnux.github.io/data-indonesia/kecamatan/${this.model.kota}.json`)
-                                                        .then((dataKec) => {
-                                                            this.dataKecamatan = dataKec.data
-                                                        })
-                                                        .then(() => {
-                                                            this.model.kecamatan = data.kecamatan
-                                                        })
-                                                        .then(() => {
-                                                            axios.get(`https://ibnux.github.io/data-indonesia/kelurahan/${this.model.kecamatan}.json`)
-                                                                .then((dataKel) => {
-                                                                    this.dataKelurahan = dataKel.data
-                                                                })
-                                                                .then(() => {
-                                                                    this.model.kelurahan = data.desa_kelurahan
-                                                                })
-                                                        })
-                                                })
-                                        })
-                                    this.model.no_hp = data.no_hp_pemimpin
-                                    this.model.jenis_kelamin = data.jk
-                                    this.model.alamat_lengkap = data.alamat_lengkap
-                                    console.log(data)
+                                    if (data != null) {
+                                        this.model.nama_ketua = data.nama_pemimpin_tim
+                                        this.model.no_identitas = data.no_identitas
+                                        this.model.tempat_lahir = data.tempat_lahir
+                                        this.model.tanggal_lahir = (new Date(data.tanggal_lahir)).toISOString().split('T')[0]
+                                        this.model.provinsi
+                                        axios.get('https://ibnux.github.io/data-indonesia/provinsi.json')
+                                            .then((dataProvinsi) => {
+                                                // console.log(data.data)
+                                                this.dataProvinsi = dataProvinsi.data
+                                                return dataProvinsi
+                                            })
+                                            .then((setData) => {
+                                                this.model.provinsi = data.provinsi
+                                            })
+                                            .then(() => {
+                                                axios.get(`https://ibnux.github.io/data-indonesia/kabupaten/${this.model.provinsi}.json`)
+                                                    .then((dataKab) => {
+                                                        this.dataKota = dataKab.data
+                                                    })
+                                                    .then(() => {
+                                                        this.model.kota = data.kota
+                                                    })
+                                                    .then(() => {
+                                                        axios.get(`https://ibnux.github.io/data-indonesia/kecamatan/${this.model.kota}.json`)
+                                                            .then((dataKec) => {
+                                                                this.dataKecamatan = dataKec.data
+                                                            })
+                                                            .then(() => {
+                                                                this.model.kecamatan = data.kecamatan
+                                                            })
+                                                            .then(() => {
+                                                                axios.get(`https://ibnux.github.io/data-indonesia/kelurahan/${this.model.kecamatan}.json`)
+                                                                    .then((dataKel) => {
+                                                                        this.dataKelurahan = dataKel.data
+                                                                    })
+                                                                    .then(() => {
+                                                                        this.model.kelurahan = data.desa_kelurahan
+                                                                    })
+                                                            })
+                                                    })
+                                            })
+                                        this.model.no_hp = data.no_hp_pemimpin
+                                        this.model.jenis_kelamin = data.jk
+                                        this.model.alamat_lengkap = data.alamat_lengkap
+                                        console.log(data)
+
+                                    }
                                 })
                                 .catch((err) => {
                                     console.error(err)
