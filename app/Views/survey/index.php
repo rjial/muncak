@@ -14,19 +14,55 @@
         </div>
     </div>
     <form method="POST" action="<?= route_to('survey_hasil') ?>" class="bg-white p-4 my-10 rounded-lg poppins space-y-8 shadow-[0_0_4px_rgba(0,0,0,20%)]">
-        <?php for ($a = 0; $a < 4; $a++) : ?>
+    
             <div>
-                <span class="text-black font-medium">Berapa kali Anda melakukan olahraga dalam seminggu?</span>
+                <span class="text-black font-medium">Berapa kali anda melakukan olahraga dalam seminggu?</span>
                 <div class="mt-4 ml-4 space-y-3">
-                    <?php for ($i = 0; $i < 4; $i++) : ?>
                         <div class="flex items-center gap-x-4">
-                            <input type="radio" name="soal-<?= $a ?>" id="soal-<?= $a ?>">
-                            <label class="text-gray-600 text-sm" for="soal-<?= $a ?>">Saya tidak berolahraga</label>
+                            <input type="radio" name="soal-1" id="soal-1a" value = '1'>
+                            <label class="text-gray-600 text-sm" for="soal-1">Tidak pernah sama sekali</label>
                         </div>
-                    <?php endfor ?>
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-1" id="soal-1b" value = '2'>
+                            <label class="text-gray-600 text-sm" for="soal-1">Jarang (1 - 2 kali)</label>
+                        </div>
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-1" id="soal-1c" value = '3'>
+                            <label class="text-gray-600 text-sm" for="soal-1">Sering (3- 5 kali)</label>
+                        </div>
+                    
                 </div>
             </div>
-        <?php endfor ?>
+        <div>
+                <span class="text-black font-medium">Berapa gelas yang anda minum setiap hari</span>
+                <div class="mt-4 ml-4 space-y-3">
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-2" id="soal-2a" value = '1'>
+                            <label class="text-gray-600 text-sm" for="soal-2">1-4 gelas (kurang)</label>
+                        </div>
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-2" id="soal-2b" value = '2'>
+                            <label class="text-gray-600 text-sm" for="soal-2">5-8 gelas (cukup)</label>
+                        </div>
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-2" id="soal-2c" value = '3'>
+                            <label class="text-gray-600 text-sm" for="soal-2">lebih dari 8 gelas (oke)</label>
+                        </div>
+                </div>
+            </div>
+            <div>
+                <span class="text-black font-medium">Apakah anda merasa mempunyai kebiasaan makan makanan yang bernutrisi</span>
+                <div class="mt-4 ml-4 space-y-3">
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-3" id="soal-3a" value = '1'>
+                            <label class="text-gray-600 text-sm" for="soal-3">Iya, seperti sayur-sayuran dan buah-buahan</label>
+                        </div>
+                        <div class="flex items-center gap-x-4">
+                            <input type="radio" name="soal-3" id="soal-3b" value = '2'>
+                            <label class="text-gray-600 text-sm" for="soal-3">Tidak, saya sering mengkonsumsi makananan cepat saji dan gorengan</label>
+                        </div>
+                </div>
+            </div>
         <div class="w-full flex justify-center p-4">
             <button type="submit" class="mx-auto bg-blue-500 text-white py-3 px-6 rounded tracking-wider">Submit Jawaban</button>
         </div>
