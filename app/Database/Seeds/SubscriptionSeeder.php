@@ -13,13 +13,14 @@ class SubscriptionSeeder extends Seeder
                 'id_subs'       => '1',
                 'nama_subs'     => 'Free',
                 'harga_subs'     => 0,
-                'keterangan_subs'     => 'Lorem Ipsum',
+                'keterangan_subs'     => 'Latest News',
             ],
             [
                 'id_subs'       => 2,
                 'nama_subs'     => 'Premium',
                 'harga_subs'     => 100000,
-                'keterangan_subs'     => 'Lorem Ipsum',
+                'keterangan_subs'     => 'Latest News
+                Survey',
             ],
         ];
 
