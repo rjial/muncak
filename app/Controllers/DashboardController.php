@@ -98,10 +98,19 @@ class DashboardController extends ResourceController
         return view('history/index', ['payments' => $data]);
     }
 
-    public function detail_history()
+    public function detail_history($id)
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('payment_history');
+        $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*');
+        $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
+        $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
+        $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
+        $builder->where('no_payment', $id);
+        $data = $builder->get()->getResultObject();
+        // dd($data[0]);
         helper(['auth']);
-        return view('history/detail');
+        return view('history/detail', ['data' => $data[0]]);
     }
     public function pricingplan()
     {
