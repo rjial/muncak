@@ -13,7 +13,7 @@
             <div class="self-stretch mx-8 h-0 border-2 border-solid border-blue-400 rounded-full"></div>
         </div>
     </div>
-    <form method="POST" action="<?= route_to('survey_hasil') ?>" class="bg-white p-4 my-10 rounded-lg poppins space-y-8 shadow-[0_0_4px_rgba(0,0,0,20%)]">
+    <form method="POST" action="<?= route_to('survey/') ?>" class="bg-white p-4 my-10 rounded-lg poppins space-y-8 shadow-[0_0_4px_rgba(0,0,0,20%)]">
     
             <div>
                 <span class="text-black font-medium">Berapa kali anda melakukan olahraga dalam seminggu?</span>
