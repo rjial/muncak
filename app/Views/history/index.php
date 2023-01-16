@@ -38,9 +38,9 @@
                                     <?php if ($payment->status == "In Progress") : ?>
                                         <a href="<?= url_to('entry', $payment->id_gunung) ?>">Update Entry Data</a>
                                     <?php elseif ($payment->status == "Menunggu Pembayaran") : ?>
-                                        <a href="">Pembayaran</a>
+                                        <a href="<?= url_to('pay_history', $payment->no_payment) ?>">Pembayaran</a>
                                     <?php endif ?>
-                                    <a href="<?= url_to('history', $payment->id_gunung) ?>">Pembayaran</a>
+                                    <!-- <a href="<?= url_to('history', $payment->id_gunung) ?>">Pembayaran</a> -->
                                 </td>
                             </tr>
                         <?php endforeach ?>

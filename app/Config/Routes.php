@@ -50,6 +50,7 @@ $routes->get('/dashboard/sop', 'DashboardController::sop', ['as' => 'sop']);
 $routes->get('/dashboard/sop/(:num)', 'DashboardController::sop/$1', ['as' => 'sop_num']);
 $routes->get('/dashboard/history', 'DashboardController::history', ['as' => 'history']);
 $routes->get('/dashboard/history/(:num)', 'DashboardController::detail_history/$1', ['as' => 'detail_history']);
+$routes->get('/dashboard/history/(:num)/pay', 'DashboardController::pay_history/$1', ['as' => 'pay_history']);
 $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 //gunung create and read
 $routes->get('/api/gunung/', 'GunungController::index');
