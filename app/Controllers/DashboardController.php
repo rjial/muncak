@@ -398,10 +398,6 @@ class DashboardController extends ResourceController
         } else {
             return $this->response->redirect(url_to('entry', $id));
         }
-<<<<<<< Updated upstream
-        
-=======
-
     }
     public function pay_history($id) {
         \Midtrans\Config::$serverKey = "SB-Mid-server-KTnpvcIdaLvQZ5RP15t8KF5j";
@@ -434,6 +430,5 @@ class DashboardController extends ResourceController
         // dd($data[0], $params, $snapToken);
         return view("history/snap", ['snapToken' => $snapToken, 'data' => $data[0]]);
 
->>>>>>> Stashed changes
     }
 }
