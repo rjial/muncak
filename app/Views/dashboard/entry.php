@@ -173,7 +173,7 @@
                 </button>
             </div>
         </div>
-        <a href="<?= url_to('entryproses', $id) ?>" class="flex justify-center align-center primary-color-bg p-4 mt-4 font-medium rounded text-white poppins">Continue to Payment</a>
+        <button @click="prosesEntry" class="flex justify-center align-center primary-color-bg p-4 mt-4 font-medium rounded text-white poppins w-full">Continue to Payment</button>
     </div>
 </div>
 
@@ -583,6 +583,24 @@
                     .catch(err => {
                         console.error(err)
                     })
+            },
+            prosesEntry() {
+                if (this.tabIndex == 2) {
+                    formData = new FormData()
+                    formData.append('anggota', JSON.stringify(this.model.anggota))
+                    for (var pair of formData.entries()) {
+                        console.log(pair[0] + ', ' + pair[1]);
+                    }
+                    axios.post('<?= url_to('entrymember', $id) ?>', formData)
+                        .then(data => {
+                            window.location = "<?= url_to('entryproses', $id) ?>"
+                        })
+                        .catch((err) => {
+                            console.error(err)
+                        })
+                } else {
+                    window.location = "<?= url_to('entryproses', $id) ?>"
+                }
             }
 
         }

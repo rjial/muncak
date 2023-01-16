@@ -1,5 +1,4 @@
 <?= $this->extend('layout/layout') ?>
-
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -39,8 +38,9 @@
                                     <?php if ($payment->status == "In Progress") : ?>
                                         <a href="<?= url_to('entry', $payment->id_gunung) ?>">Update Entry Data</a>
                                     <?php elseif ($payment->status == "Menunggu Pembayaran") : ?>
-                                        <a href="<?= url_to('entry', $payment->id_gunung) ?>">Pembayaran</a>
+                                        <a href="">Pembayaran</a>
                                     <?php endif ?>
+                                    <a href="<?= url_to('history', $payment->id_gunung) ?>">Pembayaran</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

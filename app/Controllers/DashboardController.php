@@ -90,6 +90,7 @@ class DashboardController extends ResourceController
         $db = \Config\Database::connect();
         $builder = $db->table('payment_history');
         $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*');
+        $builder->where('booking.id_users', getAuth()->id);
         $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
         $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
         $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
@@ -408,7 +409,11 @@ class DashboardController extends ResourceController
         $booking = $builder->where('id_users', getAuth()->id)->get()->getFirstRow();
         $status = true;
         $tablepayment = $db->table('payment_history');
-        // dd($booking);
+        $timbooking = $builder->select('*')->where('id_users', getAuth()->id)->join('tim', 'booking.id_tim = tim.id_tim');
+        $leader = $timbooking->join('pemimpin_tim', 'pemimpin_tim.id_pemimpin = tim.id_pemimpin');
+        $member = $db->table('anggota')->select('anggota.*')->join('tim', 'tim.id_tim = anggota.id_tim')->where('tim.id_tim', $booking->id_tim);
+        // $member = $builder->select('*')->where('id_users', getAuth()->id)->join('tim', 'booking.id_tim = tim.id_tim');
+        dd([$booking, $timbooking->get()->getResultObject()[0], $leader->get()->getResultObject()[0], $member->get()->getResultObject()]);
         if ($tablepayment->where('id_booking', $booking->id_booking)->update(['status' =>'Menunggu Pembayaran'])) {
             $status = true;
         } else {

@@ -29,7 +29,11 @@
             <li><a href="<?= url_to('Home::index') ?>">Home</a></li>
             <?php if (isLogged()) : ?>
                 <li><a href="<?= url_to('dashboard') ?>">Dashboard</a></li>
-                <li><a href="<?= url_to('survey_index') ?>">Survey</a></li>
+                <?php if (getAuth()->subs != null) : ?>
+                    <?php if (getAuth()->subs[0]->id_subs == 2) : ?>
+                        <li><a href="<?= url_to('survey_index') ?>">Survey</a></li>
+                    <?php endif ?>
+                <?php endif ?>
             <?php endif; ?>
             <li><a>Tutorial</a></li>
             <li><a>Check Booking</a></li>

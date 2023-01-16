@@ -42,7 +42,7 @@ function getAuth()
     $cookie = get_cookie('jwt');
     if (isLogged() == false) {
         if ($cookie != null) {
-            redirect('logout');
+            return redirect()->route('logout');
         }
         return false;
     }
@@ -66,6 +66,7 @@ function getAuth()
         $subs = null;
     }
     $return = new stdClass();
+    // dd($user);
     if ($user != null) {
         $return->id = $user['id_users'];
         $return->username = $user['username'];
@@ -75,19 +76,21 @@ function getAuth()
         if ($user['id_subs'] != null || $subs != null) {
             $return->subs = $subs;
         } else {
-            $return->subs = null;
+            // die();
+            $return->subs = [];
 
         }
         return $return;
     } else {
+        return redirect()->route('logout');
         delete_cookie('jwt');
         redirect()->route('signin');
         $return->id = "";
         $return->nama = "";
         $return->username = "";
         $return->email = "";
-        $return->role = "";
-        $return->subs = null;
+        $return->role = array();
+        $return->subs = [];
         return redirect()->route('signin');
     }
 }
