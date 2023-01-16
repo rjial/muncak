@@ -10,8 +10,8 @@
     <div class="flex flex-col items-center mb-24">
         <img src="<?= base_url('images/healthy.png') ?>" class="lg:w-2/4 lg:h-2/4 w-3/4 h-3/4" alt="">
         <div class="poppins flex flex-col justify-center items-center text-black gap-y-2">
-            <span class="font-medium text-xl">Kamu terlihat siap untuk mendaki!</span>
-            <span class="font-light text-sm">Jangan lupa perbanyak minum air putih ya...</span>
+            <span class="font-medium text-xl" id="hasil"><?= $hasil ?></span>
+            <span class="font-light text-sm"><?= $rekom ?></span>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" fill="none" viewBox="0 0 32 40" class="mt-10 mb-16">
             <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".4" stroke-width="2" d="m8 12 8 8 8-8" />
@@ -27,6 +27,7 @@
             <li class="leading-loose">Atur jadwal tidur yang teratur, dengan memastikan untuk tidur sekitar 7-8 jam setiap malamnya. Hindari kebiasaan tidur terlalu larut malam atau terlalu siang, karena dapat mengganggu pola tidur yang teratur.</li>
         </ul>
     </div>
+    <p id="hasil_tes"></p>
 
 
 </div>
