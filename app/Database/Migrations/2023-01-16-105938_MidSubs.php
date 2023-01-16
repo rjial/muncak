@@ -26,6 +26,14 @@ class MidSubs extends Migration
             'transaction_id_subs'              => [
                 'type'              => 'VARCHAR',
                 'constraint'        => '255',
+            ],
+            'date_subs'              => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '255',
+            ],
+            'status_subs'              => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '255',
             ]
             ]);
             $this->forge->addPrimaryKey('id_midsubs');
