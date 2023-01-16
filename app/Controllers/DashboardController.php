@@ -398,6 +398,42 @@ class DashboardController extends ResourceController
         } else {
             return $this->response->redirect(url_to('entry', $id));
         }
+<<<<<<< Updated upstream
         
+=======
+
+    }
+    public function pay_history($id) {
+        \Midtrans\Config::$serverKey = "SB-Mid-server-KTnpvcIdaLvQZ5RP15t8KF5j";
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+
+        $db = \Config\Database::connect(); 
+        $builder = $db->table('payment_history');
+        $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*, tim.*, pemimpin_tim.*');
+        $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
+        $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
+        $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
+        $builder->join('tim', 'tim.id_tim = booking.id_tim');
+        $builder->join('pemimpin_tim', 'pemimpin_tim.id_pemimpin = tim.id_pemimpin');
+        $builder->where('no_payment', $id);
+        $data = $builder->get()->getResultObject();
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $data[0]->harga_masuk,
+            ),
+            'items_details' => array(
+                'id' => $data[0]->id_booking,
+                'price' => $data[0]->harga_masuk,
+                'quantity' => 1,
+                'name' => $data[0]->nama
+            )
+        );
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // dd($data[0], $params, $snapToken);
+        return view("history/snap", ['snapToken' => $snapToken, 'data' => $data[0]]);
+
+>>>>>>> Stashed changes
     }
 }
