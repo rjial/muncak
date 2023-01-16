@@ -15,7 +15,6 @@ class DashboardController extends ResourceController
     use ResponseTrait;
     public function __construct()
     {
-        
         helper('auth');
     }
     public function index()
@@ -24,7 +23,7 @@ class DashboardController extends ResourceController
             return redirect('subscription.index');
         }
         helper(['auth']);
-        
+
         // dd(isLogged());
         return view('dashboard/index');
     }
@@ -267,7 +266,7 @@ class DashboardController extends ResourceController
             $teamid = 0;
             $teaminsert = null;
             $response = [];
-            
+
             if ($team == null) {
                 $teaminsert = $team_builder->set('id_pemimpin', null)->insert();
                 if ($teaminsert == true) {
@@ -311,7 +310,7 @@ class DashboardController extends ResourceController
                 }
             } else {
                 $data_tim = $team_builder->where('id_tim', $team);
-                
+
                 $leader_builder = $db->table('pemimpin_tim');
                 $result = null;
                 if ($data_tim->get()->getResultObject()[0]->id_pemimpin == null) {
@@ -381,7 +380,7 @@ class DashboardController extends ResourceController
         $arr_member = json_decode($this->request->getPost('anggota'));
         foreach($arr_member as $member) {
             $data = [
-                'nama_anggota' => $member->nama, 
+                'nama_anggota' => $member->nama,
                 'no_identitas' => $member->no_identitas,
                 'jk' => $member->jenis_kelamin ? "Laki-laki" : "Perempuan",
                 'no_hp' => $member->no_hp,
@@ -413,17 +412,73 @@ class DashboardController extends ResourceController
         $leader = $timbooking->join('pemimpin_tim', 'pemimpin_tim.id_pemimpin = tim.id_pemimpin');
         $member = $db->table('anggota')->select('anggota.*')->join('tim', 'tim.id_tim = anggota.id_tim')->where('tim.id_tim', $booking->id_tim);
         // $member = $builder->select('*')->where('id_users', getAuth()->id)->join('tim', 'booking.id_tim = tim.id_tim');
-        dd([$booking, $timbooking->get()->getResultObject()[0], $leader->get()->getResultObject()[0], $member->get()->getResultObject()]);
-        if ($tablepayment->where('id_booking', $booking->id_booking)->update(['status' =>'Menunggu Pembayaran'])) {
-            $status = true;
+        // dd([$booking, $timbooking->get()->getResultObject()[0], $leader->get()->getResultObject()[0], $member->get()->getResultObject()]);
+        $message = "";
+        if ($builder->where('id_users', getAuth()->id)->get() == false) {
+            if ($status != false) {
+                $status = false;
+                $message = "Booking tidak ditemukan";
+            }
+        }
+        if ($timbooking->get() == false) {
+            if ($status != false) {
+                $status = false;
+                $message = "Team tidak ditemukan";
+            }
+        }
+        if ($leader->get() == false) {
+            if ($status != false) {
+                $status = false;
+                $message = "Pemimpin tim tidak ditemukan";
+            }
+        }
+        if ($status) {
+            if ($tablepayment->where('id_booking', $booking->id_booking)->update(['status' =>'Menunggu Pembayaran'])) {
+
+            } else {
+                $status = false;
+                $message = "Database gagal update";
+            }
         } else {
-            $status = false;
+
         }
         if($status) {
-            return $this->response->redirect(url_to('history'));
+            return redirect()->to(url_to("history"));
         } else {
-            return $this->response->redirect(url_to('entry', $id));
+            return redirect()->to(url_to('entry', $id))->with("error_message", [$message, $status]);
         }
-        
+
+    }
+    public function pay_history($id) {
+        \Midtrans\Config::$serverKey = "SB-Mid-server-KTnpvcIdaLvQZ5RP15t8KF5j";
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('payment_history');
+        $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*, tim.*, pemimpin_tim.*');
+        $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
+        $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
+        $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
+        $builder->join('tim', 'tim.id_tim = booking.id_tim');
+        $builder->join('pemimpin_tim', 'pemimpin_tim.id_pemimpin = tim.id_pemimpin');
+        $builder->where('no_payment', $id);
+        $data = $builder->get()->getResultObject();
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $data[0]->harga_masuk,
+            ),
+            'items_details' => array(
+                'id' => $data[0]->id_booking,
+                'price' => $data[0]->harga_masuk,
+                'quantity' => 1,
+                'name' => $data[0]->nama
+            )
+        );
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // dd($data[0], $params, $snapToken);
+        return view("history/snap", ['snapToken' => $snapToken, 'data' => $data[0]]);
+
     }
 }
