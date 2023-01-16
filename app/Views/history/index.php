@@ -1,5 +1,4 @@
 <?= $this->extend('layout/layout') ?>
-
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -28,22 +27,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-sm td-color">
-                            <td class="px-4 pb-3 pt-6">1</td>
-                            <td class="px-4 pb-3 pt-6">24/11/2022</td>
-                            <td class="px-4 pb-3 pt-6">BR-93810533</td>
-                            <td class="px-4 pb-3 pt-6">Mount Bromo</td>
-                            <td id="status-booking" class="px-4 pb-3 pt-6">Completed</td>
-                            <td class="px-4 pb-3 pt-6 text-blue-600"><a href="<?= url_to('detail_history') ?>">DETAILS</a></td>
-                        </tr>
-                        <tr class="text-sm td-color">
-                            <td class="px-4 py-3">2</td>
-                            <td class="px-4 py-3">24/11/2022</td>
-                            <td class="px-4 py-3">AR-01930025</td>
-                            <td class="px-4 py-3">Mount Arjuno</td>
-                            <td id="status-booking" class="px-4 py-3">In process</td>
-                            <td class="px-4 py-3 text-blue-600"><a href="<?= url_to('detail_history') ?>">DETAILS</a></td>
-                        </tr>
+                        <?php foreach ($payments as $payment) : ?>
+                            <tr class="text-sm td-color">
+                                <td class="px-4 pb-3 pt-6">1</td>
+                                <td class="px-4 pb-3 pt-6"><?= $payment->date ?></td>
+                                <td class="px-4 pb-3 pt-6"><?= $payment->id_booking ?></td>
+                                <td class="px-4 pb-3 pt-6"><?= $payment->nama ?></td>
+                                <td id="status-booking" class="px-4 pb-3 pt-6"><?= $payment->status ?></td>
+                                <td class="px-4 pb-3 pt-6 text-blue-600">
+                                    <?php if ($payment->status == "In Progress") : ?>
+                                        <a href="<?= url_to('entry', $payment->id_gunung) ?>">Update Entry Data</a>
+                                    <?php elseif ($payment->status == "Menunggu Pembayaran") : ?>
+                                        <a href="">Pembayaran</a>
+                                    <?php endif ?>
+                                    <a href="<?= url_to('history', $payment->id_gunung) ?>">Pembayaran</a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

@@ -16,7 +16,7 @@ class DashboardController extends ResourceController
     public function __construct()
     {
         
-        // helper('auth');
+        helper('auth');
     }
     public function index()
     {
@@ -87,13 +87,31 @@ class DashboardController extends ResourceController
     public function history()
     {
         helper(['auth']);
-        return view('history/index');
+        $db = \Config\Database::connect();
+        $builder = $db->table('payment_history');
+        $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*');
+        $builder->where('booking.id_users', getAuth()->id);
+        $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
+        $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
+        $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
+        $data = $builder->get()->getResultObject();
+        // dd($data);
+        return view('history/index', ['payments' => $data]);
     }
 
-    public function detail_history()
+    public function detail_history($id)
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('payment_history');
+        $builder->select('payment_history.*, booking.*, jalur.nama, gunung.*');
+        $builder->join('booking', 'payment_history.id_booking = booking.id_booking');
+        $builder->join('jalur', 'booking.id_jalur = jalur.id_jalur');
+        $builder->join('gunung', 'gunung.id_gunung = jalur.id_gunung');
+        $builder->where('no_payment', $id);
+        $data = $builder->get()->getResultObject();
+        // dd($data[0]);
         helper(['auth']);
-        return view('history/detail');
+        return view('history/detail', ['data' => $data[0]]);
     }
     public function pricingplan()
     {
@@ -390,8 +408,16 @@ class DashboardController extends ResourceController
         $builder = $db->table('booking');
         $booking = $builder->where('id_users', getAuth()->id)->get()->getFirstRow();
         $status = true;
-        if(sizeof($builder->where('id_users', getAuth()->id)->get()->getRowObject()) > 0) {
+        $tablepayment = $db->table('payment_history');
+        $timbooking = $builder->select('*')->where('id_users', getAuth()->id)->join('tim', 'booking.id_tim = tim.id_tim');
+        $leader = $timbooking->join('pemimpin_tim', 'pemimpin_tim.id_pemimpin = tim.id_pemimpin');
+        $member = $db->table('anggota')->select('anggota.*')->join('tim', 'tim.id_tim = anggota.id_tim')->where('tim.id_tim', $booking->id_tim);
+        // $member = $builder->select('*')->where('id_users', getAuth()->id)->join('tim', 'booking.id_tim = tim.id_tim');
+        dd([$booking, $timbooking->get()->getResultObject()[0], $leader->get()->getResultObject()[0], $member->get()->getResultObject()]);
+        if ($tablepayment->where('id_booking', $booking->id_booking)->update(['status' =>'Menunggu Pembayaran'])) {
             $status = true;
+        } else {
+            $status = false;
         }
         if($status) {
             return $this->response->redirect(url_to('history'));
