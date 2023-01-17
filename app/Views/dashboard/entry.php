@@ -1,5 +1,4 @@
 <?= $this->extend('layout/layout') ?>
-
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -173,7 +172,7 @@
                 </button>
             </div>
         </div>
-        <a href="<?= url_to('entryproses', $id) ?>" class="flex justify-center align-center primary-color-bg p-4 mt-4 font-medium rounded text-white poppins">Continue to Payment</a>
+        <button @click="prosesEntry" class="flex justify-center align-center primary-color-bg p-4 mt-4 font-medium rounded text-white poppins w-full">Continue to Payment</button>
     </div>
 </div>
 
@@ -201,8 +200,8 @@
                     kecamatan: 1,
                     kelurahan: 1,
                     jalur: '',
-                    tanggal_naik: '',
-                    tanggal_turun: '',
+                    tanggal_naik: new Date().toISOString().substr(0, 10) ,
+                    tanggal_turun: new Date().toISOString().substr(0, 10),
                     nama_ketua: '',
                     no_identitas: '',
                     tempat_lahir: '',
@@ -357,7 +356,7 @@
 
                     }
                 }
-                // this.tabIndex = 0 
+                // this.tabIndex = 0
                 if (newTab > 2) {
                     Cookies.set('tabIndex', 0)
                     this.tabIndex = 0
@@ -512,12 +511,22 @@
                             data
                         } = res.data
                         console.log(data)
+                        if (data != null) {
 
-                        let tanggal_naik = (new Date(data[0].tanggal_naik)).toISOString().split('T')[0]
-                        let tanggal_turun = (new Date(data[0].tanggal_turun)).toISOString().split('T')[0]
-                        this.model.tanggal_naik = tanggal_naik
-                        this.model.tanggal_turun = tanggal_turun
-                        this.model.jalur = data[0].id_jalur
+                            if (data[0].tanggal_naik != null) {
+                                let tanggal_naik = (new Date(data[0].tanggal_naik)).toISOString().split('T')[0]
+                                this.model.tanggal_naik = tanggal_naik
+                            }
+                            if (data[0].tanggal_turun != null) {
+                                let tanggal_turun = (new Date(data[0].tanggal_turun)).toISOString().split('T')[0]
+                                this.model.tanggal_turun = tanggal_turun
+
+                            }
+                            if(data[0].id_jalur != null) {
+                                this.model.jalur = data[0].id_jalur
+                            }
+                        }
+
                         // console.log(tanggal_naik)
                     })
                     .catch(err => {
@@ -583,6 +592,24 @@
                     .catch(err => {
                         console.error(err)
                     })
+            },
+            prosesEntry() {
+                if (this.tabIndex == 2) {
+                    formData = new FormData()
+                    formData.append('anggota', JSON.stringify(this.model.anggota))
+                    for (var pair of formData.entries()) {
+                        console.log(pair[0] + ', ' + pair[1]);
+                    }
+                    axios.post('<?= url_to('entrymember', $id) ?>', formData)
+                        .then(data => {
+                            window.location = "<?= url_to('entryproses', $id) ?>"
+                        })
+                        .catch((err) => {
+                            console.error(err)
+                        })
+                } else {
+                    window.location = "<?= url_to('entryproses', $id) ?>"
+                }
             }
 
         }

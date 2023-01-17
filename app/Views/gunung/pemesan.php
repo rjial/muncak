@@ -1,4 +1,5 @@
 <?= $this->extend('layout/layout') ?>
+<?php dd($pemesans) ?>
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -14,12 +15,11 @@
     <div class="flex flex-col gap-y-4 w-full poppins">
         <div class="soft-shadow-2 flex flex-col rounded-lg">
             <div class="m-5">
-                <div class="poppins font-semibold text-slate-700 mb-2">Payment History</div>
+                <div class="poppins font-semibold text-slate-700 mb-2">Daftar Pemesan Tiket</div>
                 <table class="table-auto w-full">
                     <thead class="">
                         <tr class="text-left text-sm border-b border-b-color">
                             <th class="px-4 py-3 font-normal th-color">No</th>
-                            <th class="px-4 py-3 font-normal th-color">Date</th>
                             <th class="px-4 py-3 font-normal th-color">Booking code</th>
                             <th class="px-4 py-3 font-normal th-color">Mountain</th>
                             <th class="px-4 py-3 font-normal th-color">Status</th>
@@ -27,24 +27,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($payments as $payment) : ?>
-                            <tr class="text-sm td-color">
-                                <td class="px-4 pb-3 pt-6">1</td>
-                                <td class="px-4 pb-3 pt-6"><?= $payment->date ?></td>
-                                <td class="px-4 pb-3 pt-6"><?= $payment->id_booking ?></td>
-                                <td class="px-4 pb-3 pt-6"><?= $payment->nama ?></td>
-                                <td id="status-booking" class="px-4 pb-3 pt-6"><?= $payment->status ?></td>
-                                <td class="px-4 pb-3 pt-6 text-blue-600">
-                                    <?php if ($payment->status == "In Progress") : ?>
-                                        <a href="<?= url_to('entry', $payment->id_gunung) ?>">Update Entry Data</a>
-                                    <?php elseif ($payment->status == "Menunggu Pembayaran") : ?>
-                                        <a href="<?= url_to('pay_history', $payment->no_payment) ?>">Pembayaran</a>
-                                    <?php elseif ($payment->status == "Menunggu Administrator") : ?>
-                                    <?php endif ?>
-                                    <a href="<?= url_to('detail_history', $payment->no_payment) ?>">Details</a>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
+                        <?php if (count($pemesans) > 0) : ?>
+                            <?php foreach ($pemesans as $pemesan) : ?>
+                                <tr class="text-sm td-color">
+                                    <td class="px-4 pb-3 pt-6">1</td>
+                                    <td class="px-4 pb-3 pt-6"><?= $pemesan->id_booking ?></td>
+                                    <td class="px-4 pb-3 pt-6"><?= $pemesan->nama ?></td>
+                                    <td id="status-booking" class="px-4 pb-3 pt-6"><?= $pemesan->status ?></td>
+                                    <td class="px-4 pb-3 pt-6 text-blue-600">
+                                        <?php if ($pemesan->status == "In Progress") : ?>
+                                        <?php elseif ($pemesan->status == "Menunggu Pembayaran") : ?>
+                                        <?php elseif ($pemesan->status == "Menunggu Administrator") : ?>
+                                            <a class="mr-3" href="<?= url_to('proses_pemesanan', $pemesan->id_booking) ?>">Konfirmasi</a>
+                                        <?php endif ?>
+                                        <a href="<?= url_to('detail_history', $pemesan->no_pemesan) ?>">Details</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        <?php endif ?>
+
                     </tbody>
                 </table>
             </div>

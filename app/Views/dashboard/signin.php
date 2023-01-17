@@ -4,6 +4,7 @@
 
 <!-- <script src="<?= base_url('js/login.js') ?>" defer></script> -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -87,12 +88,22 @@
     const {
         createApp
     } = Vue
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 2000,
+    })
     createApp({
         data() {
             return {
                 email: "",
                 password: "",
-                loading: false
+                loading: false,
+                validation: {
+                    email: null,
+                    password: null
+                }
             }
         },
         methods: {
@@ -112,6 +123,21 @@
                         window.location.href = '/dashboard'
                     })
                     .catch((error) => {
+                        let {
+                            data
+                        } = error.response
+                        const list = document.createElement('ul');
+                        for (const [key, value] of Object.entries(data.messages)) {
+                            const listItem = document.createElement('li');
+                            listItem.innerHTML = value;
+                            list.appendChild(listItem);
+                        }
+                        Toast.fire({
+                            icon: 'error',
+                            // title: data.messages,
+                            html: list.innerHTML
+                        })
+                        console.log(error.response)
                         this.switchLoading()
                     })
                 e.preventDefault();

@@ -12,8 +12,10 @@ class DebugController extends BaseController
     }
     public function bootstrap() {
         if ($_SERVER['CI_ENVIRONMENT'] == "development") {
+            echo "<pre>";
             echo command('migrate:refresh') . "<br/>";
             echo command('db:seed AllSeeder');
+            echo "</pre>";
         }
     }
 }

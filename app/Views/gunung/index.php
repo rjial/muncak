@@ -1,5 +1,4 @@
 <?= $this->extend('layout/layout') ?>
-
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
