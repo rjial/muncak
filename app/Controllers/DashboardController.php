@@ -47,11 +47,17 @@ class DashboardController extends ResourceController
         $check = $db->table('booking');
         $check->where('id_users', getAuth()->id);
         $isOngoing = false;
-        // dd($check->where('id_users', getAuth()->id)->get()->getFirstRow());
-        if ($check->where('id_users', getAuth()->id)->get()->getFirstRow() != null) {
-            $payment = $db->table("payment_history")->where("id_booking", $check->where('id_users', getAuth()->id)->get()->getFirstRow()->id_booking)->get()->getFirstRow();
-            if ($check->countAll() > 0 && $payment->status != "Completed") $isOngoing = true;
-        }
+        $payment_history = $db->table("payment_history");
+        $data_payment = $db->
+        table("payment_history")->
+        join("booking", "booking.id_booking = payment_history.id_booking")->
+        join("users", "users.id_users = booking.id_users")->
+        where("users.id_users", getAuth()->id)->
+        where("status !=", "Complete")->
+        get()->getResultObject();
+        // dd($data_payment);
+
+        if (sizeof($data_payment) > 0) $isOngoing = true;
         // dd($gunung);
         // dd(isLogged());
         return view('gunung/index', ['gunung' => $gunung, 'isOngoing' => $isOngoing]);

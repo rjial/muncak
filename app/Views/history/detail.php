@@ -16,7 +16,7 @@
         <div class="soft-shadow-3 flex flex-col rounded-lg">
             <div class="m-5">
                 <div class="flex justify-between items-center">
-                    <div class="poppins font-semibold text-slate-700">Payment Details</div>
+                    <div class="poppins font-semibold text-slate-700">Booking Details</div>
                     <!-- tombol print pdf -->
                     <a href="#" class="poppins text-[#4D73F8] text-sm border border-[#4D73F8] px-4 py-3 rounded font-medium gap-2.5 flex items-center w-fit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
