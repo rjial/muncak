@@ -59,7 +59,6 @@ class SubcriptionController extends BaseController
                 'id' => $data[0]->id_subs,
                 'price' => $data[0]->harga_subs,
                 'quantity' => 1,
-
             )
         );
 

@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-n7p99D1eYiosdMhN"></script>
+<<<<<<< HEAD
     <script src="<?= base_url('js/axios.min.js') ?>" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+=======
+>>>>>>> 50429cbf554a52d9ca6a3123a1fe39f880ff31db
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Snap</title>
 </head>
