@@ -14,7 +14,7 @@ class GunungModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama','deskripsi','url_gunung','book_available', 'harga_masuk'];
+    protected $allowedFields    = ['nama','deskripsi','url_gunung','book_available', 'harga_masuk', 'id_users'];
 
     // Dates
     protected $useTimestamps = false;

@@ -1,5 +1,8 @@
 <?= $this->extend('layout/layout') ?>
+<?php
 
+use \Carbon\Carbon;
+?>
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -33,85 +36,97 @@
                 </div>
 
                 <div class="grid grid-cols-2 mt-5 text-sm text-gray-500 mb-5">
-                    <div class="flex">
-                        <div class="w-40">Payment date</div>
-                        <div class="w-8">:</div>
-                        <div class="text-gray-900">24/11/2022</div>
-                    </div>
-                    <div class="flex">
-                        <div class="w-40">Mountain name</div>
-                        <div class="w-8">:</div>
-                        <div class="text-gray-900">Mount Bromo</div>
-                    </div>
+                    <?php if ($payment != null) : ?>
+
+                        <div class="flex">
+                            <div class="w-40">Payment date</div>
+                            <div class="w-8">:</div>
+                            <div class="text-gray-900"><?= Carbon::parse($payment->date, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></div>
+                        </div>
+                    <?php endif ?>
+                    <?php if ($gunung != null) : ?>
+                        <div class="flex">
+                            <div class="w-40">Mountain name</div>
+                            <div class="w-8">:</div>
+                            <div class="text-gray-900"><?= $gunung->nama ?></div>
+                        </div>
+                    <?php endif ?>
                 </div>
 
                 <div class="grid grid-cols-2 mt-5 text-sm text-gray-500">
                     <div class="flex">
                         <div class="w-40">Booking date</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">BR-0385191102</div>
+                        <div class="text-gray-900"><?= Carbon::parse($data->tanggal_booking, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></div>
                     </div>
-                    <div class="flex">
-                        <div class="w-40">BR-0385191102</div>
-                        <div class="w-8">:</div>
-                        <div id="status-booking" class="text-gray-900 font-medium">Completed</div>
-                    </div>
+                    <?php if ($payment != null) : ?>
+                        <div class="flex">
+                            <div class="w-40">Status</div>
+                            <div class="w-8">:</div>
+                            <div id="status-booking" class="text-gray-900 font-medium"><?= $payment->status ?> </div>
+                        </div>
+                    <?php endif ?>
                 </div>
 
                 <div class="divider mt-5 mb-5"></div>
 
-                <div class="space-y-4 text-sm text-gray-500 mb-8">
-                    <div class="poppins font-semibold text-slate-700">Schedule</div>
-                    <div class="flex">
-                        <div class="w-40">Jalur pendakian</div>
-                        <div class="w-8">:</div>
-                        <div class="text-gray-900">Jalur sutra</div>
+                <?php if ($gunung != null) : ?>
+                    <div class="space-y-4 text-sm text-gray-500 mb-8">
+                        <div class="poppins font-semibold text-slate-700">Schedule</div>
+                        <div class="flex">
+                            <div class="w-40">Jalur pendakian</div>
+                            <div class="w-8">:</div>
+                            <div class="text-gray-900"><?= $gunung->nama_jalur ?></div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-40">Tanggal naik</div>
+                            <div class="w-8">:</div>
+                            <div class="text-gray-900"><?= Carbon::parse($gunung->tanggal_awal, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-40">Tanggal turun</div>
+                            <div class="w-8">:</div>
+                            <div class="text-gray-900"><?= Carbon::parse($gunung->tanggal_akhir, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></div>
+                        </div>
                     </div>
-                    <div class="flex">
-                        <div class="w-40">Tanggal naik</div>
-                        <div class="w-8">:</div>
-                        <div class="text-gray-900">24/11/2022</div>
-                    </div>
-                    <div class="flex">
-                        <div class="w-40">Tanggal turun</div>
-                        <div class="w-8">:</div>
-                        <div class="text-gray-900">26/11/2022</div>
-                    </div>
-                </div>
+                <?php endif ?>
 
+
+                <?php if ($leader != null) : ?>
                 <div class="space-y-4 text-sm text-gray-500 mb-8">
                     <div class="poppins font-semibold text-slate-700">Leader</div>
                     <div class="flex">
                         <div class="w-40">Nama ketua</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">Kim Ronaldo Kun</div>
+                        <div class="text-gray-900"><?= $leader->nama_pemimpin_tim ?></div>
                     </div>
                     <div class="flex">
                         <div class="w-40">Nomor identitas</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">1236310976992156</div>
+                        <div class="text-gray-900"><?= $leader->no_identitas ?></div>
                     </div>
                     <div class="flex">
                         <div class="w-40">Tempat, tanggal lahir</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">Pulau pucung, 17/08/46</div>
+                        <div class="text-gray-900"><?= $leader->tempat_lahir . ", " .  Carbon::parse($leader->tanggal_lahir, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></div>
                     </div>
                     <div class="flex">
                         <div class="w-40">Alamat</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">Jl. Raya Tidar No.100, Karangbesuki, Kec. Sukun, Kota Malang, Jawa Timur 65146</div>
+                        <div class="text-gray-900"><?= $leader->alamat_lengkap ?></div>
                     </div>
                     <div class="flex">
                         <div class="w-40">Jenis kelamin</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">Laki-laki</div>
+                        <div class="text-gray-900"><?= $leader->jk ? "Laki-laki" : "Perempuan" ?></div>
                     </div>
                     <div class="flex">
                         <div class="w-40">Nomor handphone</div>
                         <div class="w-8">:</div>
-                        <div class="text-gray-900">+6283189033557</div>
+                        <div class="text-gray-900"><?= $leader->no_hp_pemimpin ?></div>
                     </div>
                 </div>
+                <?php endif ?>
 
                 <div class="poppins text-sm font-semibold text-slate-700 mb-1 mt-8">Anggota</div>
                 <table class="table-auto w-full">
@@ -125,20 +140,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $id = 1; ?>
+                        <?php foreach($anggotas as $anggota) : ?>
                         <tr class="text-sm td-color">
-                            <td class="px-4 pb-3 pt-6">1</td>
-                            <td class="px-4 pb-3 pt-6">Chi Cayson</td>
-                            <td class="px-4 pb-3 pt-6">1001928455601957</td>
-                            <td class="px-4 pb-3 pt-6">Perempuan</td>
+                            <td class="px-4 pb-3 pt-6"><?= $id ?></td>
+                            <td class="px-4 pb-3 pt-6"><?= $anggota->nama_anggota ?></td>
+                            <td class="px-4 pb-3 pt-6"><?= $anggota->no_identitas ?></td>
+                            <td class="px-4 pb-3 pt-6"><?= $anggota->jk ?></td>
                             <td id="status-booking" class="px-4 pb-3 pt-6">+6281209777822</td>
                         </tr>
-                        <tr class="text-sm td-color">
+                        <?php $id++; ?>
+                        <?php endforeach ?>
+                        <!-- <tr class="text-sm td-color">
                             <td class="px-4 py-3">2</td>
                             <td class="px-4 py-3">Bjorn Ironside</td>
                             <td class="px-4 py-3">200198720492010</td>
                             <td class="px-4 py-3">Laki-laki</td>
                             <td id="status-booking" class="px-4 py-3">+6285158619000</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -154,14 +173,14 @@
 
 <?= $this->section('footer') ?>
 <script>
-    const statusBooking = document.querySelectorAll("#status-booking");
-    statusBooking.forEach((status) => {
-        if (status.innerHTML == "Completed") { // mengubah warna text menunggu..., selesai, dan batal
-            status.style.color = "green";
-        } else if (status.innerHTML == "In process") {
-            status.style.color = "#eed202";
-        }
-    });
+    // const statusBooking = document.querySelectorAll("#status-booking");
+    // statusBooking.forEach((status) => {
+    //     if (status.innerHTML == "Completed") { // mengubah warna text menunggu..., selesai, dan batal
+    //         status.style.color = "green";
+    //     } else if (status.innerHTML == "In process") {
+    //         status.style.color = "#eed202";
+    //     }
+    // });
 
     const {
         createApp

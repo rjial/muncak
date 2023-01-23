@@ -29,16 +29,33 @@
             <li><a href="<?= url_to('Home::index') ?>">Home</a></li>
             <?php if (isLogged()) : ?>
                 <li><a href="<?= url_to('dashboard') ?>">Dashboard</a></li>
+
+                <?php if (getAuth()->role->id_role != 3) : ?>
+                    <li tabindex="0">
+                        <a>
+                            Gunungku
+                        </a>
+                        <ul class="p-2 bg-base-100">
+                            <?php
+                            $db = \Config\Database::connect();
+                            $gunungs = $db->table("gunung")->where("id_users", getAuth()->id)->get()->getResultObject();
+                            foreach ($gunungs as $gunung) :
+                            ?>
+                                <li><a href="<?= url_to('gunung', $gunung->id_gunung) ?>"><?= $gunung->nama ?></a></li>
+                            <?php endforeach ?>
+                        </ul>
+                    </li>
+                <?php endif ?>
                 <?php if (getAuth()->subs != null) : ?>
                     <?php if (getAuth()->subs[0]->id_subs == 2) : ?>
                         <li><a href="<?= url_to('survey_index') ?>">Survey</a></li>
                     <?php endif ?>
                 <?php endif ?>
+                <li><a href="<?= url_to('history') ?>">History</a></li>
             <?php endif; ?>
-            <li><a>Tutorial</a></li>
-            <li><a>Check Booking</a></li>
+            <!-- <li><a>Tutorial</a></li> -->
+            <!-- <li><a>Check Booking</a></li> -->
             <li><a href="<?= url_to('sop') ?>">SOP</a></li>
-            <li><a href="<?= url_to('history') ?>">History</a></li>
         </ul>
     </div>
     <div class="navbar-end px-2 mx-2">

@@ -52,9 +52,13 @@ $routes->get('/dashboard/history', 'DashboardController::history', ['as' => 'his
 $routes->get('/dashboard/history/(:num)', 'DashboardController::detail_history/$1', ['as' => 'detail_history']);
 $routes->get('/dashboard/history/(:num)/pay', 'DashboardController::pay_history/$1', ['as' => 'pay_history']);
 $routes->post('/dashboard/history/(:num)/retrieve', 'DashboardController::retrieve_payment/$1', ['as' => 'retrieve_payment']);
+$routes->get('/dashboard/history/(:num)/selesai', 'DashboardController::done_history/$1', ['as' => 'done_history']);
 $routes->get('/logout', 'DashboardController::logout', ['as' => 'logout']);
 //gunung create and read
 $routes->get('/api/gunung/', 'GunungController::index');
+$routes->get('/api/gunung/(:num)/list', 'GunungController::list_antrian/$1', ['as' => 'gunung.list_antrian', 'filter' => 'auth']);
+$routes->get('/api/gunung/(:num)/approve/(:num)', 'GunungController::approve_antrian/$1/$2', ['as' => 'gunung.approve_antrian', 'filter' => 'auth']);
+$routes->get('/api/gunung/(:num)/selesai/(:num)', 'GunungController::selesai_antrian/$1/$2', ['as' => 'gunung.selesai_antrian', 'filter' => 'auth']);
 $routes->post('/api/gunung/add', 'GunungController::add');
 $routes->get('/api/jalur/', 'GunungController::jalurgunung');
 // sementara untuk edit halaman detail

@@ -33,6 +33,10 @@ class Booking extends Migration
             'tanggal_turun'              => [
                 'type'              => 'DATETIME',
                 'null'              => true,
+            ],
+            'tanggal_booking'              => [
+                'type'              => 'DATETIME',
+                'null'              => true,
             ]
         ]);
 
