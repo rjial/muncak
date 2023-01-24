@@ -17,7 +17,8 @@ class GunungSeeder extends Seeder
                 'book_available' => '1',
                 'harga_masuk' => 75000,
                 'tanggal_awal' => '2022-12-12',
-                'tanggal_akhir' => '2022-12-29'
+                'tanggal_akhir' => '2022-12-29',
+                'id_users'      => 2
             ],
             [
                 'nama' => 'Gunung Semeru',
@@ -26,7 +27,8 @@ class GunungSeeder extends Seeder
                 'book_available' => '1',
                 'harga_masuk' => 75000,
                 'tanggal_awal' => '2022-12-12',
-                'tanggal_akhir' => '2022-12-29'
+                'tanggal_akhir' => '2022-12-29',
+                'id_users'      => 3
             ],
             [
                 'nama' => 'Gunung Bromo',
@@ -35,7 +37,8 @@ class GunungSeeder extends Seeder
                 'book_available' => '1',
                 'harga_masuk' => 75000,
                 'tanggal_awal' => '2022-12-12',
-                'tanggal_akhir' => '2022-12-29'
+                'tanggal_akhir' => '2022-12-29',
+                'id_users'      => 4
             ]
             ];
             $this->db->table('gunung')->insertBatch($data);

@@ -35,7 +35,7 @@
                                     <td class="px-4 pb-3 pt-6"><?= $pemesan->nama ?></td>
                                     <td id="status-booking" class="px-4 pb-3 pt-6"><?= $pemesan->status ?></td>
                                     <td class="px-4 pb-3 pt-6 text-blue-600">
-                                        <?php if ($pemesan->status == "In Progress") : ?>
+                                        <?php if ($pemesan->status == "Menunggu Entry") : ?>
                                         <?php elseif ($pemesan->status == "Menunggu Pembayaran") : ?>
                                         <?php elseif ($pemesan->status == "Menunggu Administrator") : ?>
                                             <a class="mr-3" href="<?= url_to('proses_pemesanan', $pemesan->id_booking) ?>">Konfirmasi</a>

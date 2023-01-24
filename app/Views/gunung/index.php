@@ -1,5 +1,4 @@
 <?= $this->extend('layout/layout') ?>
-
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -28,7 +27,7 @@ $gununggg = [
 <?= $this->include('layout/navbar') ?>
 <div id="app">
 
-    <div class="h-screen relative" >
+    <div class="h-screen relative">
         <img class="h-full w-full absolute brightness-[0.25]" src="<?= base_url('images/gunung/' . $gunung['url_gunung']) ?>" alt="">
         <div class="flex flex-row justify-between items-center absolute w-full px-48 h-full">
             <div class="w-16 h-0 border-2 border-solid border-white rounded-full"></div>
@@ -42,15 +41,18 @@ $gununggg = [
 
     <div class="flex flex-row my-20">
         <!-- kolom kiri -->
-        <div class="ml-20 flex-col flex basis-1/2 pr-24">
+        <div class="ml-20 flex-col flex basis-1/2 pr-24 space-y-3">
+                    
             <div class="poppins font-semibold text-xl text-slate-700 mb-1">About the Mountain</div>
-            <br>
             <div class="poppins font-normal text-base text-gray-500"><?= $gunung['deskripsi'] ?></div>
         </div>
 
         <!-- kolom kanan -->
-        <div class="mr-20 flex flex-col">
+        <div class="mr-20 flex flex-col space-y-8">
             <!-- images -->
+            <?php if ($singduwegunung) : ?>
+                        <a class="poppins text-white text-sm bg-[#5CDB5C] px-4 py-3 rounded-lg font-medium text-center" href="<?= url_to("gunung.list_antrian", $gunung['id_gunung']) ?>">List Antrian</a>
+                    <?php endif ?>
             <div class="flex flex-row h-136">
                 <!-- left images -->
                 <div class="flex flex-col mr-4 h-full w-72 space-y-4">
@@ -89,9 +91,11 @@ $gununggg = [
             <div class="mt-8 grid grid-cols-2 gap-4">
                 <div class="flex justify-center items-center text-2xl text-blue-500 font-semibold poppins">Rp<?= $gunung['harga_masuk'] ?> <span class="text-gray-500 font-normal text-sm">/person</span> </div>
                 <?php if ($isOngoing) : ?>
-                <button disabled class="disabled flex justify-center items-center bg-blue-300 h-12 rounded text-white poppins font-semibold font-normal">Book now</button>
+                    <div class="tooltip tooltip-bottom h-12 w-full" data-tip="Anda masih melakukan perjalanan!">
+                        <button disabled class="disabled w-full flex justify-center items-center bg-blue-300 h-12 rounded text-white poppins font-semibold font-normal">Book now</button>
+                    </div>
                 <?php else : ?>
-                <button @click="execBook" class="flex justify-center items-center bg-blue-500 h-12 rounded text-white poppins font-semibold font-normal">Book now</button>
+                    <button @click="execBook" class="flex justify-center items-center bg-blue-500 h-12 rounded text-white poppins font-semibold font-normal">Book now</button>
                 <?php endif ?>
             </div>
         </div>
@@ -121,11 +125,15 @@ $gununggg = [
                 console.log(window.location)
                 // axios.post(window.location.pathname + '/book')
                 axios.post('<?= url_to('booknow', $gunung['id_gunung']) ?>')
-                .then(data => {
-                    // let idGunung = window.location.pathname.split('/')[3]
-                    // window.location.href = window.location.origin + '/dashboard/entry/' + idGunung
-                    window.location.href = "<?= url_to('entry', $gunung['id_gunung']) ?>"
-                })
+                    .then(data => {
+                        console.log(data.data.url_redirect)
+                        // let idGunung = window.location.pathname.split('/')[3]
+                        // window.location.href = window.location.origin + '/dashboard/entry/' + idGunung
+                        window.location.href = data.data.url_redirect
+                    })
+                    .catch(error => {
+                        console.error(error)
+                    })
             }
         }
 

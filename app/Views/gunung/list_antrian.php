@@ -1,7 +1,7 @@
 <?php
+
 use \Carbon\Carbon;
 ?>
-
 <?= $this->extend('layout/layout') ?>
 <?= $this->section('head') ?>
 <script src="<?= base_url('js/home.js') ?>" defer></script>
@@ -18,7 +18,7 @@ use \Carbon\Carbon;
     <div class="flex flex-col gap-y-4 w-full poppins">
         <div class="soft-shadow-2 flex flex-col rounded-lg">
             <div class="m-5">
-                <div class="poppins font-semibold text-slate-700 mb-2">Payment History</div>
+                <div class="poppins font-semibold text-slate-700 mb-2">List Antrian</div>
                 <table class="table-auto w-full">
                     <thead class="">
                         <tr class="text-left text-sm border-b border-b-color">
@@ -31,27 +31,27 @@ use \Carbon\Carbon;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $id = 1 ?>
-                        <?php foreach ($payments as $payment) : ?>
+                        <?php $id = 1; ?>
+                        <?php foreach ($antrians as $antrian) : ?>
                             <tr class="text-sm td-color">
                                 <td class="px-4 pb-3 pt-6"><?= $id ?></td>
-                                <td class="px-4 pb-3 pt-6"><?= Carbon::parse($payment->date, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></td>
-                                <td class="px-4 pb-3 pt-6"><?= $payment->id_booking ?></td>
-                                <td class="px-4 pb-3 pt-6"><?= $payment->nama_gunung ?></td>
-                                <td id="status-booking" class="px-4 pb-3 pt-6"><?= $payment->status ?></td>
+                                <td class="px-4 pb-3 pt-6"><?= Carbon::parse($antrian->date, "Asia/Jakarta")->locale("id")->isoFormat("dddd, D MMMM gggg") ?></td>
+                                <td class="px-4 pb-3 pt-6"><?= $antrian->id_booking ?></td>
+                                <td class="px-4 pb-3 pt-6"><?= $antrian->nama_gunung ?></td>
+                                <td id="status-booking" class="px-4 pb-3 pt-6"><?= $antrian->status ?></td>
                                 <td class="px-4 pb-3 pt-6 text-blue-600 flex flex-row space-x-2">
-                                    <?php if ($payment->status == "Menunggu Entry") : ?>
-                                        <a href="<?= url_to('entry', $payment->id_gunung) ?>">Update Entry Data</a>
-                                    <?php elseif ($payment->status == "Menunggu Pembayaran") : ?>
-                                        <a href="<?= url_to('pay_history', $payment->no_payment) ?>">Bayar Sekarang</a>
-                                    <?php elseif ($payment->status == "Menunggu Administrator") : ?>
-                                    <?php elseif ($payment->status == "In Progress") : ?>
-                                        <a href="<?= url_to('done_history', $payment->id_booking) ?>">Selesai</a>
+                                    <?php if ($antrian->status == "Menunggu Pembayaran") : ?>
+                                    <?php elseif ($antrian->status == "Menunggu Entry") : ?>
+                                    <?php elseif ($antrian->status == "Menunggu Administrator") : ?>
+                                        <a href="<?= url_to('gunung.approve_antrian', $antrian->id_gunung, $antrian->id_booking) ?>">Konfirmasi</a>
+                                    <?php elseif ($antrian->status == "In Progress") : ?>
+                                        <a href="<?= url_to('gunung.selesai_antrian', $antrian->id_gunung, $antrian->id_booking) ?>">Selesai</a>
+
                                     <?php endif ?>
-                                    <a href="<?= url_to('detail_history', $payment->id_booking) ?>">Details</a>
+                                    <a href="<?= url_to('detail_history', $antrian->id_booking) ?>">Details</a>
                                 </td>
                             </tr>
-                        <?php $id++ ?>
+                            <?php $id++; ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>
@@ -86,12 +86,13 @@ use \Carbon\Carbon;
 
             }
         },
-        // mounted() {
-        //     if (Cookies.get('tabIndex') != undefined) {
-        //         this.tabIndex = Cookies.get('tabIndex')
-        //     }
-        //     this.loadProvinsi()
-        // },
+        mounted() {
+            // if (Cookies.get('tabIndex') != undefined) {
+            //     this.tabIndex = Cookies.get('tabIndex')
+            // }
+            // this.loadProvinsi()
+            <?= isset($_SESSION['messages']) ?>
+        },
         methods: {
 
 

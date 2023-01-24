@@ -180,6 +180,11 @@
 
 <?= $this->section('footer') ?>
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+    })
     const {
         createApp
     } = Vue
@@ -200,7 +205,7 @@
                     kecamatan: 1,
                     kelurahan: 1,
                     jalur: '',
-                    tanggal_naik: new Date().toISOString().substr(0, 10) ,
+                    tanggal_naik: new Date().toISOString().substr(0, 10),
                     tanggal_turun: new Date().toISOString().substr(0, 10),
                     nama_ketua: '',
                     no_identitas: '',
@@ -241,6 +246,10 @@
                                         Cookies.set('tabIndex', newTab)
                                         this.tabIndex = newTab
                                         console.log(data)
+                                        Toast.fire({
+                                            icon: data.data.error ? 'error' : 'success',
+                                            title: data.data.messages
+                                        })
                                     })
                                     .catch((err) => {
                                         console.error(err)
@@ -268,6 +277,10 @@
                                     Cookies.set('tabIndex', newTab)
                                     this.tabIndex = newTab
                                     console.log(data)
+                                    Toast.fire({
+                                        icon: data.data.error ? 'error' : 'success',
+                                        title: data.data.message
+                                    })
                                 })
                                 .catch((err) => {
                                     console.error(err)
@@ -284,6 +297,10 @@
                                     Cookies.set('tabIndex', newTab)
                                     this.tabIndex = newTab
                                     console.log(data)
+                                    Toast.fire({
+                                        icon: data.data.status ? 'success' : 'error',
+                                        title: data.data.message
+                                    })
                                 })
                                 .catch((err) => {
                                     console.error(err)
@@ -522,7 +539,7 @@
                                 this.model.tanggal_turun = tanggal_turun
 
                             }
-                            if(data[0].id_jalur != null) {
+                            if (data[0].id_jalur != null) {
                                 this.model.jalur = data[0].id_jalur
                             }
                         }

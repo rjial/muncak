@@ -20,7 +20,7 @@ class PaymentHistory extends Migration
             ],
             'status'   => [
                 'type'              => 'ENUM',
-                'constraint'        => "'Complete','In Progress','Menunggu Pembayaran'",
+                'constraint'        => "'Complete','In Progress','Menunggu Pembayaran', 'Menunggu Administrator', 'Menunggu Entry'",
             
             ],
         ]);

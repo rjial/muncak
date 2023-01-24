@@ -20,8 +20,8 @@ class SurveyController extends BaseController
      $soal1 = $this->request->getPost('soal-1');
      $soal2 = $this->request->getPost('soal-2');
      $soal3 = $this->request->getPost('soal-3');
-     $hasil;
-     $rekom;
+     $hasil = "";
+     $rekom = "";
         // olahraga
          if($soal1 == "1") {
              //echo "Tidak pernah sama sekali";
